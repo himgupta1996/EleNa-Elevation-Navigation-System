@@ -84,7 +84,7 @@ class DataAbstract(object):
             print("Elevation Type: ", min_max)
         if not self.init:
             abstract = AbstractGraph()
-            self.nx_graph = abstract.get_graph(end_point)
+            self.nx_graph = abstract.generate(end_point)
             self.algorithms = distance_calculate(self.nx_graph, elevation_adjust=elevation_ratio, elevation_type=min_max)
             self.init = True
         shortest_path, elevated_path = self.algorithms.shortest_path(begin_point, end_point, elevation_ratio, 
