@@ -4,21 +4,23 @@ import logging
 
 # Create a custom logger
 class Logger(object):
-    def __init__(self):
+    def __init__(self, file_path):
+        self.file_path = file_path
         pass
 
     def get_logger(self):
+        logging.basicConfig(level=logging.DEBUG)
         self.logger = logging.getLogger(__name__)
 
         # Create handlers
         c_handler = logging.StreamHandler()
-        f_handler = logging.FileHandler('logs/server.log')
-        c_handler.setLevel(logging.WARNING)
-        f_handler.setLevel(logging.ERROR)
+        f_handler = logging.FileHandler(self.file_path)
+        c_handler.setLevel(logging.DEBUG)
+        f_handler.setLevel(logging.DEBUG)
 
         # Create formatters and add it to handlers
-        c_format = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
-        f_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        c_format = logging.Formatter('%(levelname)s - %(message)s')
+        f_format = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
         c_handler.setFormatter(c_format)
         f_handler.setFormatter(f_format)
 
@@ -26,4 +28,4 @@ class Logger(object):
         self.logger.addHandler(c_handler)
         self.logger.addHandler(f_handler)
 
-        return logger
+        return self.logger

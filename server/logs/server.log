@@ -1,0 +1,9 @@
+2021-12-04 23:07:04,067 - server.logger_utils - ERROR - I am in Home
+2021-12-04 23:07:50,564 - ERROR - I am in Home
+2021-12-04 23:16:11,949 - DEBUG - I am debug
+2021-12-04 23:16:30,822 - DEBUG - I am debug
+2021-12-04 23:16:44,473 - DEBUG - I am debug
+2021-12-04 23:20:49,058 - DEBUG - I am debug
+2021-12-04 23:20:51,450 - ERROR - I am in Home
+2021-12-04 23:26:14,106 - DEBUG - I am debug
+2021-12-04 23:26:27,831 - DEBUG - I am debug
