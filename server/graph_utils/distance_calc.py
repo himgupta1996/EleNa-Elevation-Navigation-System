@@ -11,12 +11,6 @@ class route_statistics:
         self.elevation_gain = elevation_gain
         self.elevation_drop = elevation_drop
 
-class graph_node: 
-    def __init__(self, distance = 0.0, priority = 0.0, start_node = None): 
-        self.distance = distance 
-        self.priority = priority
-        self.node = start_node 
-
 class distance_calculate: 
     def __init__(self, logger, graph, elevation_adjust = 0.0, elevation_type = "max"):
         self.nx_graph = graph 
@@ -34,45 +28,60 @@ class distance_calculate:
         self.logger = logger
 
     def get_edge_cost(self, start_node, end_node, cost = "normal"): 
-        if not start_node or not end_node or not self.nx_graph: 
+        graph = self.nx_graph
+        if start_node is None or end_node is None: 
             return 
-        if cost == "normal": 
-            return self.nx_graph.edges[start_node, end_node, 0]["length"]
-        elif cost == "drop": 
-            return max(0.0, self.nx_graph.nodes[start_node]["elevation"] - 
-                        self.nx_graph.nodes[end_node]["elevation"])
-        elif cost == "gain": 
-            return max(0.0, self.nx_graph.nodes[end_node]["elevation"] - 
-                        self.nx_graph.nodes[start_node]["elevation"])
-        elif cost == "difference": 
-            return self.nx_graph.nodes[end_node]["elevation"] - \
-            self.nx_graph.nodes[start_node]["elevation"] 
-        return 
+        if cost == "normal":
+            try: 
+                return graph.edges[start_node, end_node ,0]["length"]
+            except: 
+                return graph.edges[start_node, end_node]["weight"]
+        elif cost == "difference":
+            return graph.nodes[end_node]["elevation"] - graph.nodes[start_node]["elevation"]
+        elif cost == "gain":
+            return max(0.0, graph.nodes[end_node]["elevation"] - graph.nodes[start_node]["elevation"])
+        elif cost == "drop":
+            return max(0.0, graph.nodes[start_node]["elevation"] - graph.nodes[end_node]["elevation"])
+        else:
+            return abs(graph.nodes[start_node]["elevation"] - graph.nodes[end_node]["elevation"])
+
+    def retrace_path(self, from_node, curr_node):
+        # Reconstructs the path and plots it.
+        if not from_node or not curr_node: return
+        total = [curr_node]
+        while curr_node in from_node:
+            curr_node = from_node[curr_node]
+            total.append(curr_node)
+        self.best_route_statistics.end_to_end_path = total[:]
+        self.best_route_statistics.total_distance = self.get_elevation_cost(self.best_route_statistics.end_to_end_path, "normal") 
+        self.best_route_statistics.elevation_gain = self.get_elevation_cost(self.best_route_statistics.end_to_end_path, "gain")
+        self.best_route_statistics.elevation_drop = self.get_elevation_cost(self.best_route_statistics.end_to_end_path, "drop")
+        return
+
 
     def get_route(self, mapping_parent_nodes, terminus): 
         path = [terminus]
-        pointer = mapping_parent_nodes[terminus]
-        # since float('-inf') indicates that the topmost node has been reached 
-        # in the form of a reverse traversal from the terminal node. 
-        while pointer != float('-inf'):
-            path.append(pointer)
-            pointer = mapping_parent_nodes[pointer]
-        # the actual path is in the reverse direction 
-        path = path.reverse()
-        return path
+        curr = mapping_parent_nodes[terminus]
+        while curr!=-1:
+            path.append(curr)
+            curr = mapping_parent_nodes[curr]
+        return path[::-1]
     
-    def get_elevation_cost(self, route, cost_category):
+    def get_elevation_cost(self, route, cost_type):
         # TODO: Implement cost computation for a particular path
         # Path may have 2 or more points to compute the total cost with 
-        total = 0 
-        for index, _ in enumerate(route): 
-            if index < len(route) - 1: 
-                if cost_category == "both": 
-                    delta = self.get_edge_cost(route[index], route[index + 1], "difference")
-                else: 
-                    delta = self.get_edge_cost(route[index], route[index + 1], cost_category)
-                total += delta
-        return total 
+        total = 0
+        for i in range(len(route)-1):
+            if cost_type == "both":
+                diff = self.get_edge_cost(route[i],route[i+1],"difference")	
+            elif cost_type == "gain":
+                diff = self.get_edge_cost(route[i],route[i+1],"gain")
+            elif cost_type == "drop":
+                diff = self.get_edge_cost(route[i],route[i+1],"drop")
+            elif cost_type == "normal":
+                diff = self.get_edge_cost(route[i],route[i+1],"normal")
+            total += diff
+        return total
             
     # Implementation of Dijkstra's weighted shortest path algorithm 
     # weight of node decided dynamically as per given elevation cost 
@@ -90,69 +99,55 @@ class distance_calculate:
         end_node = self.terminal_node 
 
         seen_nodes = set() 
-        iterable_nodes = [graph_node(start_node = start_node)]
+        temp = [(0.0, 0.0, start_node)]
         parent_node_map = collections.defaultdict(int)
         # the start node cannot have a valid parent node 
-        parent_node_map[start_node] = float('-inf')
+        parent_node_map[start_node] = -1
         priority_map = {start_node: 0}
         # start the traversal 
-        while iterable_nodes:
-            current_node = heappop(iterable_nodes)
-            self.logger.debug(f"the current node is {current_node.__dict__}")
-            node = current_node.node 
-            distance = current_node.distance 
-            priority = current_node.priority
-            self.logger.debug(f"The node is {node}")
-            if node not in seen_nodes: 
+        while temp:
+            priority, distance, node = heappop(temp)      
+            self.logger.debug(f"distance: {distance}")      
+            if node not in seen_nodes:
                 seen_nodes.add(node)
                 if node == end_node:
-                    self.logger.debug(f"start node same as end node")
-                    break 
+                    break
 
                 for neighbor in temp_graph.neighbors(node):
-                    self.logger.debug(f"the nighbor is {neighbor}")
                     if neighbor in seen_nodes: 
                         continue
                     
-                    # previous_priority = None
-                    # if neighbor in priority_map:
-                    previous_priority = priority_map.get(neighbor, None)
-                    edge_length = self.get_edge_cost(node, neighbor, "normal")
-
+                    prev = priority_map.get(neighbor, None) # get past priority of the node
+                    edge_len = self.get_edge_cost(node, neighbor, "normal")
+                    
+                    # Update distance btw the nodes depending on maximize(subtract) or minimize elevation(add)
                     if elevation_type == "max":
                         if elevation <= 0.5:
-                            next_priority = self.get_edge_cost(node, neighbor, "drop") + edge_length * self.weight
+                            next_priority = edge_len*0.1 + self.get_edge_cost(node, neighbor, "drop")
                             next_priority += priority
                         else:
-                            next_priority = (edge_length * self.weight -
-                                             self.get_edge_cost(node, neighbor,
-                                                                "difference")) * edge_length * self.weight
+                            next_priority = (edge_len*0.1 - self.get_edge_cost(node, neighbor, "difference")) * edge_len*0.1
                     else:
-                        next_priority = self.get_edge_cost(node, neighbor, "gain") + edge_length * self.weight
+                        next_priority = edge_len*0.1 + self.get_edge_cost(node, neighbor, "gain")
                         next_priority += priority
-
-                    next_distance = edge_length + distance
-                    # if nxt_distance <= shortest * (1.0 + x) and (prev is None or nxt < prev):
-                    #     parent_node[n] = curr_node
-                    #     prior_info[n] = nxt
-                    #     heappush(temp, (nxt, nxt_distance, n))
-
-                    if next_distance <= temp_shortest*(elevation + 1.0) and (previous_priority is None or next_priority < previous_priority):
-                        self.logger.debug("I am here 2")
+                    
+                    next_distance = distance + edge_len
+                    
+                    if next_distance <= temp_shortest*(1.0+elevation) and (prev is None or next_priority < prev):
                         parent_node_map[neighbor] = node
                         priority_map[neighbor] = next_priority
-                        new_node = graph_node(next_distance, next_priority, neighbor)
-                        heappush(iterable_nodes, new_node)
-        
+                        heappush(temp, (next_priority, next_distance, neighbor))        
+
         if not distance:
             self.logger.debug(f"the distance is {distance}")
             return
 
+        self.logger.debug(f"route dijkstra {self.get_route(parent_node_map, end_node)}")
         self.best_route_statistics.end_to_end_path = self.get_route(parent_node_map, end_node)[:]
         self.logger.debug(f"the end to end path is djikstra {self.best_route_statistics.end_to_end_path}")
         self.best_route_statistics.total_distance = distance 
-        self.best_route_statistics.elevation_gain = self.get_elevation_cost(self.best_route_stats.end_to_end_path, "gain")
-        self.best_route_statistics.elevation_drop = self.get_elevation_cost(self.best_route_stats.end_to_end_path, "drop")
+        self.best_route_statistics.elevation_gain = self.get_elevation_cost(self.best_route_statistics.end_to_end_path, "gain")
+        self.best_route_statistics.elevation_drop = self.get_elevation_cost(self.best_route_statistics.end_to_end_path, "drop")
         return
 
     # TODO: Implement A-star search algorithm for finding the shortest path 
@@ -183,44 +178,35 @@ class distance_calculate:
         cost_to_start_node[start_node] = 0 
         second_cost_to_start_node[start_node] = 0 
 
-        final_route_score[start_node] = self.weight * temp_graph.nodes[start_node]['dist_from_dest']
-        while len(nodes_to_evaluate) != 0:
-            this_node = min([(node, final_route_score[node]) for node in nodes_to_evaluate], key=lambda t: t[1])[0] 
-            if this_node == end_node: 
-                if not this_node or not best_route_node: return
-                path = [this_node]
-                while node_pointer in this_node:
-                    node_pointer = this_node[node_pointer]
-                    path.append(node_pointer)
-                self.best_route_statistics.end_to_end_path = path[:]
-                self.logger.debug(f"the end to end path id astar {self.best_route_statistics.end_to_end_path}")
-                self.best_route_statistics.total_distance = self.get_elevation_cost(path, "normal")
-                self.best_route_statistics.elevation_gain = self.get_elevation_cost(path, "gain")
-                self.best_route_statistics.elevation_drop = self.get_elevation_cost(path, "drop")
-                return 
+        final_route_score[start_node] = temp_graph.nodes[start_node]['dist_from_dest'] * 0.1
+        while len(nodes_to_evaluate):
+            curr_node = min([(node, final_route_score[node]) for node in nodes_to_evaluate], key=lambda t: t[1])[0]            
+            if curr_node == end_node:
+                self.retrace_path(best_route_node, curr_node)
+                return
             
-            nodes_to_evaluate.remove(this_node)
-            evaluated_nodes.add(this_node)
-            for neighbor in temp_graph.neighbors(this_node): 
-                if neighbor in evaluated_nodes: continue 
-                if elevation_type == "max": 
-                    predicted_cost_to_start_node = self.get_edge_cost(this_node, neighbor, "gain") + cost_to_start_node[this_node]
-                elif elevation_type == "min": 
-                    predicted_cost_to_start_node = self.get_edge_cost(this_node, neighbor, "drop") + cost_to_start_node[this_node]
-                second_predicted_cost = self.get_edge_cost(this_node, neighbor, "normal") + second_cost_to_start_node[this_node]
-            
-                if second_predicted_cost <= (1+elevation) * temp_shortest and neighbor not in nodes_to_evaluate:
+            nodes_to_evaluate.remove(curr_node)
+            evaluated_nodes.add(curr_node)
+            for neighbor in temp_graph.neighbors(curr_node):
+                if neighbor in evaluated_nodes: 
+                    continue 
+                if elevation_type == "min":
+                    pred_costToStart = cost_to_start_node[curr_node] + self.get_edge_cost(curr_node, neighbor, "gain")
+                elif elevation_type == "max":
+                    pred_costToStart = cost_to_start_node[curr_node] + self.get_edge_cost(curr_node, neighbor, "drop")
+
+                pred_costToStart1 = second_cost_to_start_node[curr_node] + self.get_edge_cost(curr_node, neighbor, "normal")
+
+                if neighbor not in nodes_to_evaluate and pred_costToStart1<=(1+elevation)*temp_shortest:# Discover a new node
                     nodes_to_evaluate.add(neighbor)
                 else: 
-                    if predicted_cost_to_start_node >= (1+elevation) * temp_shortest or \
-                    predicted_cost_to_start_node >= cost_to_start_node[neighbor]:
+                    if (pred_costToStart >= cost_to_start_node[neighbor]) or (pred_costToStart1>=(1+elevation)*temp_shortest):
                         continue 
 
-                    best_route_node[neighbor] = this_node
-                    cost_to_start_node[neighbor] = predicted_cost_to_start_node
-                    second_cost_to_start_node[neighbor] = second_predicted_cost
-                    final_route_score[neighbor] = (temp_graph.nodes[neighbor]['dist_from_dest']*self.weight) 
-                    + cost_to_start_node[neighbor]
+                best_route_node[neighbor] = curr_node
+                cost_to_start_node[neighbor] = pred_costToStart
+                second_cost_to_start_node[neighbor] = pred_costToStart1
+                final_route_score[neighbor] = cost_to_start_node[neighbor] + temp_graph.nodes[neighbor]['dist_from_dest']*0.1
 
     def reset_best_route_stats(self, elevation_type):
         self.best_route_statistics.end_to_end_path = []
@@ -246,6 +232,7 @@ class distance_calculate:
         self.shortest_route = nx.shortest_path(nx_graph, source=self.begin_node, 
         target=self.terminal_node, weight = self.osmnx_weight)
         self.logger.debug(f"the shortest route is {self.shortest_route}")
+        self.shortest_distance  = sum(osmnx.get_route_edge_attributes(nx_graph, self.shortest_route, 'length'))
         for node in self.shortest_route: 
             self.shortest_path_statistics.end_to_end_path.append([nx_graph.nodes[node]['x'], nx_graph.nodes[node]['y']])
         # self.logger.debug(f"the shortest route is {self.shortest_route}")

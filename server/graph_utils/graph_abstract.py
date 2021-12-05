@@ -1,16 +1,18 @@
 import osmnx as map
 import networkx as nx
 import numpy as np
-import pickle as p
+import os 
+import pickle as p 
 
 class AbstractGraph:
     def __init__(self, logger):
+        
         # hard code constants 
         self.API_KEY = "AIzaSyCJgTZU8StpSFsIulOvO40iF684-g6m4IA"
         self.radius = 6371008.8
         # UMass Amherst is the start point 
         self.start = [42.384803, -72.529262]
-        self.logger = logger
+        self.logger = logger 
 
     # calculate the physical "metre" distance between 2 points given coordinates 
     def distance(self, latitudeA, longitudeA, latitudeB, longitudeB):
@@ -28,16 +30,11 @@ class AbstractGraph:
         return radial_distance_metre * self.radius
 
     # generate the initial graph 
-    def generate(self, terminal_point):
-        self.nx_graph = p.load(open("server/graph_utils/graph.p", "rb"))
-        # self.logger.debug(f"The nx graph is {self.nx_graph}")
-        # self.logger.debug("In generate")
+    def generate(self, terminal_point):    
+        self.nx_graph = p.load( open("server/graph_utils/graph.p", "rb" ))
         # self.nx_graph = map.graph_from_point(self.start, distance=20000, network_type='walk')
-        # self.logger.debug(self.nx_graph)
-        # self.nx_graph = map.add_node_elevations(self.nx_graph, api_key=self.API_KEY)
-        # self.logger.debug(self.nx_graph)
+        # self.nx_graph = map.add_node_elevations(self.nx_graph, api_key=self.API_KEY)                        
         self.nx_graph = self.distance_from_endpoint(self.nx_graph, terminal_point)
-        self.logger.debug(self.nx_graph)
         return self.nx_graph
 
     def distance_from_endpoint(self, nx_graph, endpt):
@@ -49,4 +46,3 @@ class AbstractGraph:
             latitudeB = nx_graph.nodes[node_location]['y']
             node_data['dist_from_dest'] = self.distance(latitudeA, longitudeA, latitudeB, longitudeB)            
         return nx_graph
-    

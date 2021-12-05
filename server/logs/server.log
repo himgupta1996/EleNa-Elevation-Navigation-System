@@ -287,3 +287,311 @@
 2021-12-05 17:17:19,130 - DEBUG - []
 2021-12-05 17:17:19,131 - DEBUG - shortest path {'end_to_end_path': [[-72.53706, 42.385506], [-72.536353, 42.385637], [-72.535916, 42.384037], [-72.533451, 42.3845479], [-72.5326164, 42.3847498], [-72.53249, 42.384784], [-72.531276, 42.385039]], 'total_distance': 641.9440000000001, 'elevation_gain': 8.823, 'elevation_drop': 0.2820000000000036}, elevated_path {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
 2021-12-05 17:17:19,131 - DEBUG - The elevated path is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 17:50:46,738 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 17:50:48,586 - DEBUG - MultiDiGraph named 'unnamed' with 25840 nodes and 73192 edges
+2021-12-05 17:50:48,697 - DEBUG - the begin node is 61791311
+2021-12-05 17:50:48,718 - DEBUG - the end node is 66655642
+2021-12-05 17:50:48,718 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 17:51:57,103 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 17:51:58,900 - DEBUG - MultiDiGraph named 'unnamed' with 25840 nodes and 73192 edges
+2021-12-05 17:51:59,010 - DEBUG - the begin node is 61791311
+2021-12-05 17:51:59,031 - DEBUG - the end node is 66655642
+2021-12-05 17:51:59,032 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 17:52:12,085 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 17:52:13,818 - DEBUG - MultiDiGraph named 'unnamed' with 25840 nodes and 73192 edges
+2021-12-05 17:52:13,929 - DEBUG - the begin node is 61791311
+2021-12-05 17:52:13,951 - DEBUG - the end node is 66655642
+2021-12-05 17:52:13,951 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 17:52:13,951 - DEBUG - the nighbor is 61800557
+2021-12-05 17:52:13,951 - DEBUG - the nighbor is 61797438
+2021-12-05 17:52:13,951 - DEBUG - the distance is 0.0
+2021-12-05 17:52:13,951 - DEBUG - the dijkstra route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 17:52:13,959 - DEBUG - the a star route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 17:52:13,959 - DEBUG - In shortest path
+2021-12-05 17:52:13,959 - DEBUG - []
+2021-12-05 17:52:13,959 - DEBUG - shortest path {'end_to_end_path': [[-72.53706, 42.385506], [-72.536353, 42.385637], [-72.535916, 42.384037], [-72.533451, 42.3845479], [-72.5326164, 42.3847498], [-72.53249, 42.384784], [-72.531276, 42.385039]], 'total_distance': 641.9440000000001, 'elevation_gain': 8.823, 'elevation_drop': 0.2820000000000036}, elevated_path {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 17:52:13,959 - DEBUG - The elevated path is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 17:57:24,507 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 17:57:26,187 - DEBUG - MultiDiGraph named 'unnamed' with 25840 nodes and 73192 edges
+2021-12-05 17:57:26,297 - DEBUG - the begin node is 61791311
+2021-12-05 17:57:26,318 - DEBUG - the end node is 66655642
+2021-12-05 17:57:26,318 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 17:57:52,207 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 17:57:53,994 - DEBUG - MultiDiGraph named 'unnamed' with 25840 nodes and 73192 edges
+2021-12-05 17:57:54,107 - DEBUG - the begin node is 61791311
+2021-12-05 17:57:54,129 - DEBUG - the end node is 66655642
+2021-12-05 17:57:54,129 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 17:58:12,790 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 17:58:14,598 - DEBUG - MultiDiGraph named 'unnamed' with 25840 nodes and 73192 edges
+2021-12-05 17:58:14,706 - DEBUG - the begin node is 61791311
+2021-12-05 17:58:14,726 - DEBUG - the end node is 66655642
+2021-12-05 17:58:14,727 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 17:58:14,727 - DEBUG - the distance is 0.0
+2021-12-05 17:58:14,727 - DEBUG - the dijkstra route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 17:58:14,734 - DEBUG - the a star route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 17:58:14,734 - DEBUG - In shortest path
+2021-12-05 17:58:14,734 - DEBUG - []
+2021-12-05 17:58:14,734 - DEBUG - shortest path {'end_to_end_path': [[-72.53706, 42.385506], [-72.536353, 42.385637], [-72.535916, 42.384037], [-72.533451, 42.3845479], [-72.5326164, 42.3847498], [-72.53249, 42.384784], [-72.531276, 42.385039]], 'total_distance': 641.9440000000001, 'elevation_gain': 8.823, 'elevation_drop': 0.2820000000000036}, elevated_path {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 17:58:14,735 - DEBUG - The elevated path is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:03:20,286 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:03:22,269 - DEBUG - MultiDiGraph named 'unnamed' with 25840 nodes and 73192 edges
+2021-12-05 18:03:22,381 - DEBUG - the begin node is 61791311
+2021-12-05 18:03:22,403 - DEBUG - the end node is 66655642
+2021-12-05 18:03:22,403 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:03:22,403 - DEBUG - the distance is 0.0
+2021-12-05 18:03:22,403 - DEBUG - the dijkstra route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:03:22,411 - DEBUG - the a star route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:03:22,411 - DEBUG - In shortest path
+2021-12-05 18:03:22,411 - DEBUG - []
+2021-12-05 18:03:22,411 - DEBUG - shortest path {'end_to_end_path': [[-72.53706, 42.385506], [-72.536353, 42.385637], [-72.535916, 42.384037], [-72.533451, 42.3845479], [-72.5326164, 42.3847498], [-72.53249, 42.384784], [-72.531276, 42.385039]], 'total_distance': 641.9440000000001, 'elevation_gain': 8.823, 'elevation_drop': 0.2820000000000036}, elevated_path {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:03:22,411 - DEBUG - The elevated path is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:05:31,391 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:05:33,132 - DEBUG - MultiDiGraph named 'unnamed' with 25840 nodes and 73192 edges
+2021-12-05 18:05:33,245 - DEBUG - the begin node is 61791311
+2021-12-05 18:05:33,266 - DEBUG - the end node is 66655642
+2021-12-05 18:05:33,266 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:05:33,267 - DEBUG - the distance is 0.0
+2021-12-05 18:05:33,267 - DEBUG - the dijkstra route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:05:33,275 - DEBUG - the a star route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:05:33,275 - DEBUG - In shortest path
+2021-12-05 18:05:33,275 - DEBUG - []
+2021-12-05 18:05:33,275 - DEBUG - shortest path {'end_to_end_path': [[-72.53706, 42.385506], [-72.536353, 42.385637], [-72.535916, 42.384037], [-72.533451, 42.3845479], [-72.5326164, 42.3847498], [-72.53249, 42.384784], [-72.531276, 42.385039]], 'total_distance': 641.9440000000001, 'elevation_gain': 8.823, 'elevation_drop': 0.2820000000000036}, elevated_path {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:05:33,275 - DEBUG - The elevated path is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:06:47,887 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:06:49,719 - DEBUG - MultiDiGraph named 'unnamed' with 25840 nodes and 73192 edges
+2021-12-05 18:06:49,827 - DEBUG - the begin node is 61791311
+2021-12-05 18:06:49,847 - DEBUG - the end node is 66655642
+2021-12-05 18:06:49,847 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:06:49,848 - DEBUG - the distance is 0.0
+2021-12-05 18:06:49,848 - DEBUG - the dijkstra route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:06:49,855 - DEBUG - the a star route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:06:49,855 - DEBUG - In shortest path
+2021-12-05 18:06:49,855 - DEBUG - []
+2021-12-05 18:06:49,855 - DEBUG - shortest path {'end_to_end_path': [[-72.53706, 42.385506], [-72.536353, 42.385637], [-72.535916, 42.384037], [-72.533451, 42.3845479], [-72.5326164, 42.3847498], [-72.53249, 42.384784], [-72.531276, 42.385039]], 'total_distance': 641.9440000000001, 'elevation_gain': 8.823, 'elevation_drop': 0.2820000000000036}, elevated_path {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:06:49,855 - DEBUG - The elevated path is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:08:05,166 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:08:06,944 - DEBUG - MultiDiGraph named 'unnamed' with 25840 nodes and 73192 edges
+2021-12-05 18:08:07,052 - DEBUG - the begin node is 61791311
+2021-12-05 18:08:07,073 - DEBUG - the end node is 66655642
+2021-12-05 18:08:07,073 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:08:07,074 - DEBUG - the distance is 0.0
+2021-12-05 18:08:07,074 - DEBUG - the dijkstra route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:08:07,081 - DEBUG - the a star route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:08:07,081 - DEBUG - In shortest path
+2021-12-05 18:08:07,081 - DEBUG - []
+2021-12-05 18:08:07,081 - DEBUG - shortest path {'end_to_end_path': [[-72.53706, 42.385506], [-72.536353, 42.385637], [-72.535916, 42.384037], [-72.533451, 42.3845479], [-72.5326164, 42.3847498], [-72.53249, 42.384784], [-72.531276, 42.385039]], 'total_distance': 641.9440000000001, 'elevation_gain': 8.823, 'elevation_drop': 0.2820000000000036}, elevated_path {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:08:07,081 - DEBUG - The elevated path is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:08:57,362 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:08:59,048 - DEBUG - MultiDiGraph named 'unnamed' with 25840 nodes and 73192 edges
+2021-12-05 18:08:59,160 - DEBUG - the begin node is 61791311
+2021-12-05 18:08:59,181 - DEBUG - the end node is 66655642
+2021-12-05 18:08:59,182 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:08:59,182 - DEBUG - distance: 0.0
+2021-12-05 18:08:59,182 - DEBUG - the distance is 0.0
+2021-12-05 18:08:59,182 - DEBUG - the dijkstra route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:08:59,190 - DEBUG - the a star route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:08:59,190 - DEBUG - In shortest path
+2021-12-05 18:08:59,190 - DEBUG - []
+2021-12-05 18:08:59,190 - DEBUG - shortest path {'end_to_end_path': [[-72.53706, 42.385506], [-72.536353, 42.385637], [-72.535916, 42.384037], [-72.533451, 42.3845479], [-72.5326164, 42.3847498], [-72.53249, 42.384784], [-72.531276, 42.385039]], 'total_distance': 641.9440000000001, 'elevation_gain': 8.823, 'elevation_drop': 0.2820000000000036}, elevated_path {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:08:59,190 - DEBUG - The elevated path is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:18:33,479 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:19:20,937 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:21:11,174 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:21:25,764 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:21:27,472 - DEBUG - the begin node is 61791311
+2021-12-05 18:21:27,492 - DEBUG - the end node is 66655642
+2021-12-05 18:21:27,493 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:21:27,493 - DEBUG - distance: 0.0
+2021-12-05 18:21:27,493 - DEBUG - the distance is 0.0
+2021-12-05 18:21:27,493 - DEBUG - the dijkstra route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:22:18,953 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:22:20,645 - DEBUG - the begin node is 61791311
+2021-12-05 18:22:20,666 - DEBUG - the end node is 66655642
+2021-12-05 18:22:20,666 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:22:20,666 - DEBUG - distance: 0.0
+2021-12-05 18:22:20,666 - DEBUG - the distance is 0.0
+2021-12-05 18:22:20,666 - DEBUG - the dijkstra route is {'end_to_end_path': [], 'total_distance': 0.0, 'elevation_gain': -inf, 'elevation_drop': inf}
+2021-12-05 18:25:20,895 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:25:22,733 - DEBUG - the begin node is 61791311
+2021-12-05 18:25:22,754 - DEBUG - the end node is 66655642
+2021-12-05 18:25:22,754 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:25:22,754 - DEBUG - distance: 0.0
+2021-12-05 18:25:22,754 - DEBUG - distance: 60.548
+2021-12-05 18:25:22,754 - DEBUG - distance: 196.93699999999998
+2021-12-05 18:25:22,754 - DEBUG - distance: 242.371
+2021-12-05 18:25:22,755 - DEBUG - distance: 253.343
+2021-12-05 18:25:22,755 - DEBUG - distance: 274.932
+2021-12-05 18:25:22,755 - DEBUG - distance: 289.246
+2021-12-05 18:25:22,755 - DEBUG - distance: 302.146
+2021-12-05 18:25:22,755 - DEBUG - distance: 343.343
+2021-12-05 18:25:22,755 - DEBUG - distance: 350.38
+2021-12-05 18:25:22,755 - DEBUG - distance: 365.245
+2021-12-05 18:25:22,755 - DEBUG - distance: 388.18
+2021-12-05 18:25:22,755 - DEBUG - distance: 399.683
+2021-12-05 18:25:22,755 - DEBUG - distance: 453.783
+2021-12-05 18:25:22,755 - DEBUG - distance: 483.227
+2021-12-05 18:25:22,755 - DEBUG - distance: 505.23499999999996
+2021-12-05 18:25:22,755 - DEBUG - distance: 514.06
+2021-12-05 18:25:22,755 - DEBUG - distance: 526.561
+2021-12-05 18:25:22,755 - DEBUG - distance: 542.3399999999999
+2021-12-05 18:25:22,755 - DEBUG - distance: 530.227
+2021-12-05 18:25:22,755 - DEBUG - distance: 526.715
+2021-12-05 18:25:22,755 - DEBUG - distance: 537.6170000000001
+2021-12-05 18:25:22,755 - DEBUG - distance: 537.168
+2021-12-05 18:25:22,755 - DEBUG - distance: 571.0500000000001
+2021-12-05 18:25:22,755 - DEBUG - distance: 584.639
+2021-12-05 18:25:22,755 - DEBUG - distance: 631.184
+2021-12-05 18:25:22,755 - DEBUG - distance: 627.0580000000001
+2021-12-05 18:25:22,755 - DEBUG - distance: 637.5010000000001
+2021-12-05 18:25:22,755 - DEBUG - distance: 659.1719999999999
+2021-12-05 18:25:22,755 - DEBUG - distance: 657.911
+2021-12-05 18:25:22,755 - DEBUG - distance: 652.8310000000001
+2021-12-05 18:25:22,756 - DEBUG - distance: 667.266
+2021-12-05 18:25:22,756 - DEBUG - distance: 664.693
+2021-12-05 18:25:22,756 - DEBUG - distance: 671.0940000000002
+2021-12-05 18:25:22,756 - DEBUG - distance: 682.199
+2021-12-05 18:25:22,756 - DEBUG - distance: 695.357
+2021-12-05 18:25:22,756 - DEBUG - distance: 697.636
+2021-12-05 18:25:22,756 - DEBUG - distance: 641.9440000000001
+2021-12-05 18:25:22,756 - DEBUG - route dijkstra [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:25:22,756 - DEBUG - the end to end path is djikstra [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:26:04,216 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:26:06,238 - DEBUG - the begin node is 61791311
+2021-12-05 18:26:06,259 - DEBUG - the end node is 66655642
+2021-12-05 18:26:06,259 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:26:06,259 - DEBUG - distance: 0.0
+2021-12-05 18:26:06,259 - DEBUG - distance: 60.548
+2021-12-05 18:26:06,259 - DEBUG - distance: 196.93699999999998
+2021-12-05 18:26:06,259 - DEBUG - distance: 242.371
+2021-12-05 18:26:06,260 - DEBUG - distance: 253.343
+2021-12-05 18:26:06,260 - DEBUG - distance: 274.932
+2021-12-05 18:26:06,260 - DEBUG - distance: 289.246
+2021-12-05 18:26:06,260 - DEBUG - distance: 302.146
+2021-12-05 18:26:06,260 - DEBUG - distance: 343.343
+2021-12-05 18:26:06,260 - DEBUG - distance: 350.38
+2021-12-05 18:26:06,260 - DEBUG - distance: 365.245
+2021-12-05 18:26:06,260 - DEBUG - distance: 388.18
+2021-12-05 18:26:06,260 - DEBUG - distance: 399.683
+2021-12-05 18:26:06,260 - DEBUG - distance: 453.783
+2021-12-05 18:26:06,260 - DEBUG - distance: 483.227
+2021-12-05 18:26:06,260 - DEBUG - distance: 505.23499999999996
+2021-12-05 18:26:06,260 - DEBUG - distance: 514.06
+2021-12-05 18:26:06,260 - DEBUG - distance: 526.561
+2021-12-05 18:26:06,260 - DEBUG - distance: 542.3399999999999
+2021-12-05 18:26:06,260 - DEBUG - distance: 530.227
+2021-12-05 18:26:06,260 - DEBUG - distance: 526.715
+2021-12-05 18:26:06,260 - DEBUG - distance: 537.6170000000001
+2021-12-05 18:26:06,261 - DEBUG - distance: 537.168
+2021-12-05 18:26:06,261 - DEBUG - distance: 571.0500000000001
+2021-12-05 18:26:06,261 - DEBUG - distance: 584.639
+2021-12-05 18:26:06,261 - DEBUG - distance: 631.184
+2021-12-05 18:26:06,261 - DEBUG - distance: 627.0580000000001
+2021-12-05 18:26:06,261 - DEBUG - distance: 637.5010000000001
+2021-12-05 18:26:06,261 - DEBUG - distance: 659.1719999999999
+2021-12-05 18:26:06,261 - DEBUG - distance: 657.911
+2021-12-05 18:26:06,261 - DEBUG - distance: 652.8310000000001
+2021-12-05 18:26:06,261 - DEBUG - distance: 667.266
+2021-12-05 18:26:06,261 - DEBUG - distance: 664.693
+2021-12-05 18:26:06,261 - DEBUG - distance: 671.0940000000002
+2021-12-05 18:26:06,261 - DEBUG - distance: 682.199
+2021-12-05 18:26:06,261 - DEBUG - distance: 695.357
+2021-12-05 18:26:06,261 - DEBUG - distance: 697.636
+2021-12-05 18:26:06,261 - DEBUG - distance: 641.9440000000001
+2021-12-05 18:26:06,261 - DEBUG - route dijkstra [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:26:06,261 - DEBUG - the end to end path is djikstra [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:26:06,261 - DEBUG - the dijkstra route is {'end_to_end_path': [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642], 'total_distance': 641.9440000000001, 'elevation_gain': 8.823, 'elevation_drop': 0.2820000000000036}
+2021-12-05 18:37:40,777 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:37:42,537 - DEBUG - the begin node is 61791311
+2021-12-05 18:37:42,557 - DEBUG - the end node is 66655642
+2021-12-05 18:37:42,558 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:37:42,558 - DEBUG - distance: 0.0
+2021-12-05 18:37:42,558 - DEBUG - distance: 60.548
+2021-12-05 18:37:42,558 - DEBUG - distance: 196.93699999999998
+2021-12-05 18:37:42,558 - DEBUG - distance: 242.371
+2021-12-05 18:37:42,558 - DEBUG - distance: 253.343
+2021-12-05 18:37:42,558 - DEBUG - distance: 274.932
+2021-12-05 18:37:42,558 - DEBUG - distance: 289.246
+2021-12-05 18:37:42,558 - DEBUG - distance: 302.146
+2021-12-05 18:37:42,559 - DEBUG - distance: 343.343
+2021-12-05 18:37:42,559 - DEBUG - distance: 350.38
+2021-12-05 18:37:42,559 - DEBUG - distance: 365.245
+2021-12-05 18:37:42,559 - DEBUG - distance: 388.18
+2021-12-05 18:37:42,559 - DEBUG - distance: 399.683
+2021-12-05 18:37:42,559 - DEBUG - distance: 453.783
+2021-12-05 18:37:42,559 - DEBUG - distance: 483.227
+2021-12-05 18:37:42,559 - DEBUG - distance: 505.23499999999996
+2021-12-05 18:37:42,559 - DEBUG - distance: 514.06
+2021-12-05 18:37:42,559 - DEBUG - distance: 526.561
+2021-12-05 18:37:42,559 - DEBUG - distance: 542.3399999999999
+2021-12-05 18:37:42,559 - DEBUG - distance: 530.227
+2021-12-05 18:37:42,559 - DEBUG - distance: 526.715
+2021-12-05 18:37:42,559 - DEBUG - distance: 537.6170000000001
+2021-12-05 18:37:42,559 - DEBUG - distance: 537.168
+2021-12-05 18:37:42,559 - DEBUG - distance: 571.0500000000001
+2021-12-05 18:37:42,559 - DEBUG - distance: 584.639
+2021-12-05 18:37:42,559 - DEBUG - distance: 631.184
+2021-12-05 18:37:42,560 - DEBUG - distance: 627.0580000000001
+2021-12-05 18:37:42,560 - DEBUG - distance: 637.5010000000001
+2021-12-05 18:37:42,560 - DEBUG - distance: 659.1719999999999
+2021-12-05 18:37:42,560 - DEBUG - distance: 657.911
+2021-12-05 18:37:42,560 - DEBUG - distance: 652.8310000000001
+2021-12-05 18:37:42,560 - DEBUG - distance: 667.266
+2021-12-05 18:37:42,560 - DEBUG - distance: 664.693
+2021-12-05 18:37:42,560 - DEBUG - distance: 671.0940000000002
+2021-12-05 18:37:42,560 - DEBUG - distance: 682.199
+2021-12-05 18:37:42,560 - DEBUG - distance: 695.357
+2021-12-05 18:37:42,560 - DEBUG - distance: 697.636
+2021-12-05 18:37:42,560 - DEBUG - distance: 641.9440000000001
+2021-12-05 18:37:42,560 - DEBUG - route dijkstra [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:37:42,560 - DEBUG - the end to end path is djikstra [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:37:42,560 - DEBUG - the dijkstra route is {'end_to_end_path': [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642], 'total_distance': 641.9440000000001, 'elevation_gain': 8.823, 'elevation_drop': 0.2820000000000036}
+2021-12-05 18:38:04,157 - DEBUG - {'start_location': {'lng': -72.54084914294442, 'lat': 42.38432751710755}, 'x': 10, 'end_location': {'lng': -72.53115027514602, 'lat': 42.38511998659308}, 'min_max': 'min'}
+2021-12-05 18:38:05,969 - DEBUG - the begin node is 61791311
+2021-12-05 18:38:05,990 - DEBUG - the end node is 66655642
+2021-12-05 18:38:05,990 - DEBUG - the shortest route is [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:38:05,991 - DEBUG - distance: 0.0
+2021-12-05 18:38:05,991 - DEBUG - distance: 60.548
+2021-12-05 18:38:05,991 - DEBUG - distance: 196.93699999999998
+2021-12-05 18:38:05,991 - DEBUG - distance: 242.371
+2021-12-05 18:38:05,991 - DEBUG - distance: 253.343
+2021-12-05 18:38:05,991 - DEBUG - distance: 274.932
+2021-12-05 18:38:05,991 - DEBUG - distance: 289.246
+2021-12-05 18:38:05,991 - DEBUG - distance: 302.146
+2021-12-05 18:38:05,991 - DEBUG - distance: 343.343
+2021-12-05 18:38:05,991 - DEBUG - distance: 350.38
+2021-12-05 18:38:05,991 - DEBUG - distance: 365.245
+2021-12-05 18:38:05,991 - DEBUG - distance: 388.18
+2021-12-05 18:38:05,991 - DEBUG - distance: 399.683
+2021-12-05 18:38:05,991 - DEBUG - distance: 453.783
+2021-12-05 18:38:05,991 - DEBUG - distance: 483.227
+2021-12-05 18:38:05,992 - DEBUG - distance: 505.23499999999996
+2021-12-05 18:38:05,992 - DEBUG - distance: 514.06
+2021-12-05 18:38:05,992 - DEBUG - distance: 526.561
+2021-12-05 18:38:05,992 - DEBUG - distance: 542.3399999999999
+2021-12-05 18:38:05,992 - DEBUG - distance: 530.227
+2021-12-05 18:38:05,992 - DEBUG - distance: 526.715
+2021-12-05 18:38:05,992 - DEBUG - distance: 537.6170000000001
+2021-12-05 18:38:05,992 - DEBUG - distance: 537.168
+2021-12-05 18:38:05,992 - DEBUG - distance: 571.0500000000001
+2021-12-05 18:38:05,992 - DEBUG - distance: 584.639
+2021-12-05 18:38:05,992 - DEBUG - distance: 631.184
+2021-12-05 18:38:05,992 - DEBUG - distance: 627.0580000000001
+2021-12-05 18:38:05,992 - DEBUG - distance: 637.5010000000001
+2021-12-05 18:38:05,992 - DEBUG - distance: 659.1719999999999
+2021-12-05 18:38:05,992 - DEBUG - distance: 657.911
+2021-12-05 18:38:05,992 - DEBUG - distance: 652.8310000000001
+2021-12-05 18:38:05,992 - DEBUG - distance: 667.266
+2021-12-05 18:38:05,992 - DEBUG - distance: 664.693
+2021-12-05 18:38:05,992 - DEBUG - distance: 671.0940000000002
+2021-12-05 18:38:05,993 - DEBUG - distance: 682.199
+2021-12-05 18:38:05,993 - DEBUG - distance: 695.357
+2021-12-05 18:38:05,993 - DEBUG - distance: 697.636
+2021-12-05 18:38:05,993 - DEBUG - distance: 641.9440000000001
+2021-12-05 18:38:05,993 - DEBUG - route dijkstra [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:38:05,993 - DEBUG - the end to end path is djikstra [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642]
+2021-12-05 18:38:05,993 - DEBUG - the dijkstra route is {'end_to_end_path': [61791311, 61797438, 61790472, 61793182, 66710693, 66701422, 66655642], 'total_distance': 641.9440000000001, 'elevation_gain': 8.823, 'elevation_drop': 0.2820000000000036}
+2021-12-05 18:38:06,001 - DEBUG - the a star route is {'end_to_end_path': [66655642, 66701422, 66710693, 61793182, 61790472, 61797438, 61791311], 'total_distance': 641.944, 'elevation_gain': 0.2820000000000036, 'elevation_drop': 8.823}
+2021-12-05 18:38:06,001 - DEBUG - In shortest path
+2021-12-05 18:38:06,001 - DEBUG - [[-72.531276, 42.385039], [-72.53249, 42.384784], [-72.5326164, 42.3847498], [-72.533451, 42.3845479], [-72.535916, 42.384037], [-72.536353, 42.385637], [-72.53706, 42.385506]]
+2021-12-05 18:38:06,001 - DEBUG - shortest path {'end_to_end_path': [[-72.53706, 42.385506], [-72.536353, 42.385637], [-72.535916, 42.384037], [-72.533451, 42.3845479], [-72.5326164, 42.3847498], [-72.53249, 42.384784], [-72.531276, 42.385039]], 'total_distance': 641.9440000000001, 'elevation_gain': 8.823, 'elevation_drop': 0.2820000000000036}, elevated_path {'end_to_end_path': [[-72.531276, 42.385039], [-72.53249, 42.384784], [-72.5326164, 42.3847498], [-72.533451, 42.3845479], [-72.535916, 42.384037], [-72.536353, 42.385637], [-72.53706, 42.385506]], 'total_distance': 641.944, 'elevation_gain': 0.2820000000000036, 'elevation_drop': 8.823}
+2021-12-05 18:38:06,001 - DEBUG - The elevated path is {'end_to_end_path': [[-72.531276, 42.385039], [-72.53249, 42.384784], [-72.5326164, 42.3847498], [-72.533451, 42.3845479], [-72.535916, 42.384037], [-72.536353, 42.385637], [-72.53706, 42.385506]], 'total_distance': 641.944, 'elevation_gain': 0.2820000000000036, 'elevation_drop': 8.823}
