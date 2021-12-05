@@ -1,10 +1,10 @@
 import collections
-import osmnx as ox
+import osmnx 
 import networkx as nx
 from collections import deque, defaultdict
 from heapq import *
 
-class route: 
+class route_statistics: 
     def __init__(self, end_to_end_path = [], total_distance = 0.0, elevation_gain = float('-inf'), elevation_drop = 0.0):
         self.end_to_end_path = end_to_end_path
         self.total_distance = total_distance
@@ -23,13 +23,15 @@ class distance_calculate:
         self.elevation_adjust = elevation_adjust 
         self.elevation_type = elevation_type 
         self.maximize = elevation_type == "max"
-        self.best_route = route()
+        self.best_route_statistics = route_statistics()
+        self.shortest_path_statistics = route_statistics()
         self.shortest_route = None 
         self.shortest_distance = 0.0 
         self.begin_node = None 
         self.terminal_node = None 
         self.weight = 0.1
-    
+        self.osmnx_weight = "length"
+
     def get_edge_cost(self, start_node, end_node, cost = "normal"): 
         if not start_node or not end_node or not self.nx_graph: 
             return 
@@ -136,14 +138,83 @@ class distance_calculate:
             if not distance: 
                 return
 
-        self.best_route.end_to_end_path = self.get_route(parent_node_map, end_node)[:]
-        self.best_route.total_distance = distance 
-        self.best_route.elevation_gain = self.get_elevation_cost(route, "gain")
-        self.best_route.elevation_gain = self.get_elevation_cost(route, "drop")
+        self.best_route_statistics.end_to_end_path = self.get_route(parent_node_map, end_node)[:]
+        self.best_route_statistics.total_distance = distance 
+        self.best_route_statistics.elevation_gain = self.get_elevation_cost(self.best_route_stats.end_to_end_path, "gain")
+        self.best_route_statistics.elevation_gain = self.get_elevation_cost(self.best_route_stats.end_to_end_path, "drop")
         return
 
     # TODO: Implement A-star search algorithm for finding the shortest path 
     def get_a_star_distance(self): 
-        pass 
+        pass
+
+    def reset_best_route(self, elevation_type): 
+        self.best_route_statistics.end_to_end_path = []
+        self.best_route_statistics.total_distance = 0.0 
+        if elevation_type == "max": 
+            self.best_route_statistics.elevation_drop = float('-inf')
+            self.best_route_statistics.elevation_gain = float('-inf')
+        else: 
+            self.best_route_statistics.elevation_drop = float('inf')
+            self.best_route_statistics.elevation_gain = float('-inf')
+
+    def shortest_path(self, begin_point, end_point, elevation, elevation_type = "max", log = True): 
+        self.elevation_adjust = elevation / 100 
+        self.begin_node = None  
+        self.terminal_node = None  
+
+        nx_graph = self.nx_graph 
+        self.reset_best_route_stats(elevation_type)
+        self.begin_node, _ = osmnx.get_nearest_node(nx_graph, point=begin_point, return_dist = True)
+        self.terminal_node, _ = osmnx.get_nearest_node(nx_graph, point=end_point, return_dist = True)
+        self.shortest_route = nx.shortest_path(nx_graph, source=self.begin_node, target=self.terminal_node, weight = self.osmnx_weight)
+        self.shortest_path_coordinates = []
+        for node in self.shortest_route: 
+            self.shortest_path_coordinates.append((nx_graph.nodes[node]['x'], nx_graph.nodes[node]['y']))
+        self.shortest_path_statistics.total_distance = sum(osmnx.get_route_edge_attributes(nx_graph, self.shortest_route, self.osmnx_weight))
+        self.shortest_path_statistics.elevation_gain = self.get_elevation_cost(self.shortest_route, "gain")
+        self.shortest_path_statistics.elevation_drop = self.get_elevation_cost(self.shortest_route, "drop")
+        
+        if(elevation == 0.0): 
+            return self.shortest_path_statistics, self.shortest_path_statistics
+        
+        self.get_dijkstra_distance()
+        # TODO: Add runtime and logging 
+        dijkstra_route = self.best_route_statistics 
+        self.reset_best_route_stats() 
+        self.get_a_star_distance()
+        a_star_route = self.best_route_statistics
+
+        if self.elevation_type == "max": 
+            if (dijkstra_route.elevation_gain > a_star_route.elevation_gain or 
+            (dijkstra_route.elevation_gain == a_star_route.elevation_gain 
+            and dijkstra_route.total_distance < a_star_route.total_distance)): 
+                self.best_route_statistics = dijkstra_route 
+            else: 
+                self.best_route_statistics = a_star_route 
+        else: 
+            if (dijkstra_route.elevation_gain < a_star_route.elevation_gain or 
+            (dijkstra_route.elevation_gain == a_star_route.elevation_gain
+            and dijkstra_route.total_distance < dijkstra_route.total_distance)): 
+                self.best_route_statistics = dijkstra_route 
+            else: 
+                self.best_route_statistics = a_star_route 
+            
+        if (self.elevation_type == "max" and self.best_route_statistics.elevation_gain == float('-inf')) or \
+        (self.elevation_type == "min" and self.best_route_statistics.elevation_drop == float('-inf')):
+            return self.shortest_path_statistics, route_statistics(elevation_drop=0, elevation_gain=0)
+
+        # calculate actual route 
+        self.best_route_statistics.end_to_end_path = [[nx_graph.nodes[node]['x'], nx_graph.nodes[node]['y']] for node in self.best_route_statistics.end_to_end_path]        
+        # edge case: neither algorithm finds the desired path 
+        # assign shortest path as the best path  
+        # TODO: convey this information on the frontend? 
+        if ((self.elevation_type == "max" and self.best_route_statistics.elevation_gain < self.shortest_path_statistics.elevation_gain)
+        or self.elev_type == "minimize" and self.best_route_statistics.elevation_gain > self.shortest_path_statistics.elevation_gain):
+            self.best_route_statistics = self.shortest_path_statistics
+        return self.shortest_path_statistics, self.best_route_statistics
+
+
+
 
 
