@@ -2,14 +2,14 @@ import osmnx as map
 import networkx as nx
 import numpy as np
 
-class GraphAbstraction:
+class AbstractGraph:
     def __init__(self):
         # hard code constants 
         self.API_KEY = "AIzaSyCJgTZU8StpSFsIulOvO40iF684-g6m4IA"
         self.radius = 6371008.8
+        # UMass Amherst is the start point 
         self.start = [42.384803, -72.529262]
 
-    
     # calculate the physical "metre" distance between 2 points given coordinates 
     def distance(self, latitudeA, longitudeA, latitudeB, longitudeB):
         latitudeA_rad = np.radians(latitudeA) 
