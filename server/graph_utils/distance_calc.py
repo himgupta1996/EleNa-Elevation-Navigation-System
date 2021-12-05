@@ -122,13 +122,10 @@ class distance_calculate:
             if not distance: 
                 return
 
-        current_route = self.get_route(parent_node_map, end_node)
-        gain_distance = self.get_elevation_cost(route, "gain")
-        drop_distance = self.get_elevation_cost(route, "drop")
-        self.best_route.end_to_end_path = current_route[:]  
+        self.best_route.end_to_end_path = self.get_route(parent_node_map, end_node)[:]
         self.best_route.total_distance = distance 
-        self.best_route.elevation_gain = gain_distance
-        self.best_route.elevation_gain = drop_distance
+        self.best_route.elevation_gain = self.get_elevation_cost(route, "gain")
+        self.best_route.elevation_gain = self.get_elevation_cost(route, "drop")
         return
 
     # TODO: Implement A-star search algorithm for finding the shortest path 
