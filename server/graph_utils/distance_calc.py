@@ -58,11 +58,19 @@ class distance_calculate:
         path = path.reverse()
         return path
     
-    def get_elevation_cost(self): 
+    def get_elevation_cost(self, route, cost_category):
         # TODO: Implement cost computation for a particular path
         # Path may have 2 or more points to compute the total cost with 
-        pass 
-
+        total = 0 
+        for index, _ in enumerate(route): 
+            if index < len(route) - 1: 
+                if cost_category == "both": 
+                    delta = self.get_edge_cost(route[index], route[index + 1], "difference")
+                else: 
+                    delta = self.get_edge_cost(route[index], route[index + 1], cost_category)
+                total += delta
+        return total 
+            
     # Implementation of Dijkstra's weighted shortest path algorithm 
     # weight of node decided dynamically as per given elevation cost 
     def get_dijkstra_distance(self): 
