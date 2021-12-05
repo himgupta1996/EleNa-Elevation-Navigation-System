@@ -18,14 +18,24 @@ def initialize_data():
         "dropElenav": 0,
         "popup_flag": 0
     }
+    
+def get_geojson(coordinates):
+    geojson = {}
+    geojson["properties"] = {}
+    geojson["type"] = "Feature"
+    geojson["geometry"] = {}
+    geojson["geometry"]["type"] = "LineString"
+    geojson["geometry"]["coordinates"] = coordinates
+
+    return geojson
 
 def get_data_from_path(start, end, shortestPath, elevPath):
     if shortestPath is None and elevPath is None:
         return data
     data["start"] = start
     data["end"] = end
-    data["elevation_route"] =  get_geojson(elevPath[0])
-    fata["shortest_route"]: get_geojson(shortestPath[0])
+    data["elevation_route"] = get_geojson(elevPath[0])
+    data["shortest_route"] = get_geojson(shortestPath[0])
     data["shortDist"] = shortestPath[1]
     data["gainShort"] = shortestPath[2]
     data["dropShort"] = shortestPath[3]
