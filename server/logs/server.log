@@ -7,3 +7,5 @@
 2021-12-04 23:20:51,450 - ERROR - I am in Home
 2021-12-04 23:26:14,106 - DEBUG - I am debug
 2021-12-04 23:26:27,831 - DEBUG - I am debug
+2021-12-05 12:18:51,793 - DEBUG - The data is 
+2021-12-05 12:20:28,294 - DEBUG - {'start_location': {'lng': -72.53289446321199, 'lat': 42.37388970802374}, 'x': 0, 'end_location': {'lng': -72.4981499681702, 'lat': 42.386986148833444}, 'min_max': 'minimize'}

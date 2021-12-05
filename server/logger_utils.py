@@ -1,5 +1,3 @@
-# logging_example.py
-
 import logging
 
 # Create a custom logger
