@@ -36,11 +36,14 @@ class distance_calculate:
         if cost == "normal": 
             return self.nx_graph.edges[start_node, end_node, 0]["length"]
         elif cost == "drop": 
-            return max(0.0, self.nx_graph.nodes[start_node]["elevation"] - self.nx_graph.nodes[end_node]["elevation"])
+            return max(0.0, self.nx_graph.nodes[start_node]["elevation"] - 
+                        self.nx_graph.nodes[end_node]["elevation"])
         elif cost == "gain": 
-            return max(0.0, self.nx_graph.nodes[end_node]["elevation"] - self.nx_graph.nodes[start_node]["elevation"])
+            return max(0.0, self.nx_graph.nodes[end_node]["elevation"] - 
+                        self.nx_graph.nodes[start_node]["elevation"])
         elif cost == "difference": 
-            return self.nx_graph.nodes[end_node]["elevation"] - self.nx_graph.nodes[start_node]["elevation"] 
+            return self.nx_graph.nodes[end_node]["elevation"] - \
+            self.nx_graph.nodes[start_node]["elevation"] 
         return 
 
     def get_route(self, mapping_parent_nodes, terminus): 
@@ -102,12 +105,15 @@ class distance_calculate:
                     
                         if elevation_type == "max":
                             if elevation > 0.5:
-                                next_priority = (edge_length * self.weight  - self.get_edge_cost(node, neighbor, "difference"))* edge_length * self.weight 
+                                next_priority = (edge_length * self.weight  - 
+                                self.get_edge_cost(node, neighbor, "difference")) * edge_length * self.weight 
                             else:
-                                next_priority = self.get_edge_cost(node, neighbor, "drop") + edge_length * self.weight   
+                                next_priority = self.get_edge_cost(node, neighbor, "drop") + \
+                                                edge_length * self.weight   
                                 next_priority += priority 
                         else:
-                            next_priority = self.get_edge_cost(node, neighbor, "gain") + edge_length*self.weight
+                            next_priority = self.get_edge_cost(node, neighbor, "gain") + \
+                                            edge_length * self.weight
                             next_priority += priority
                         
                         next_distance = edge_length + distance
