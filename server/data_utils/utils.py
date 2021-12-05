@@ -6,6 +6,38 @@ from geopy.geocoders import Photon
 init = False
 G, M, algorithms = None, None, None
 
+def initialize_data():
+    data = {
+        "elevation_route": [],
+        "shortest_route": [],
+        "shortDist": 0,
+        "gainShort": 0,
+        "dropShort": 0,
+        "elenavDist": 0,
+        "gainElenav": 0,
+        "dropElenav": 0,
+        "popup_flag": 0
+    }
+
+def get_data_from_path(start, end, shortestPath, elevPath):
+    if shortestPath is None and elevPath is None:
+        return data
+    data["start"] = start
+    data["end"] = end
+    data["elevation_route"] =  get_geojson(elevPath[0])
+    fata["shortest_route"]: get_geojson(shortestPath[0])
+    data["shortDist"] = shortestPath[1]
+    data["gainShort"] = shortestPath[2]
+    data["dropShort"] = shortestPath[3]
+    data["elenavDist"] = elevPath[1]
+    data["gainElenav"] = elevPath[2]
+    data["dropElenav"] = elevPath[3]
+    if len(elevPath[0]) == 0:
+        data["popup_flag"] = 1
+    else:
+        data["popup_flag"] = 2
+    return data
+
 def get_data_point_from_location(locate, len_location):
     return locate[0] + ',' + locate[1] + ',' + locate[2] + ',' + locate[len_location - 5] + ',' + locate[
         len_location - 3] + ', USA - ' + locate[len_location - 2]
@@ -13,6 +45,8 @@ def get_data_point_from_location(locate, len_location):
 def get_data(startpt, endpt, x, min_max, log=True):
     # gets data for plotting the routes. 
     global init, G, M, algorithms
+
+    data = initialize_data()
 
     locator = Photon(user_agent="myGeocoder")
     print("The start point is", startpt)
@@ -45,27 +79,4 @@ def get_data(startpt, endpt, x, min_max, log=True):
 
     shortestPath, elevPath = algorithms.get_shortest_path(startpt, endpt, x, elev_type=min_max, log=log)
 
-    if shortestPath is None and elevPath is None:
-        data = {"elevation_route": [], "shortest_route": []}
-        data["shortDist"] = 0
-        data["gainShort"] = 0
-        data["dropShort"] = 0
-        data["elenavDist"] = 0
-        data["gainElenav"] = 0
-        data["dropElenav"] = 0
-        data["popup_flag"] = 0
-        return data
-    data = {"elevation_route": get_geojson(elevPath[0]), "shortest_route": get_geojson(shortestPath[0])}
-    data["shortDist"] = shortestPath[1]
-    data["gainShort"] = shortestPath[2]
-    data["dropShort"] = shortestPath[3]
-    data["start"] = start
-    data["end"] = end
-    data["elenavDist"] = elevPath[1]
-    data["gainElenav"] = elevPath[2]
-    data["dropElenav"] = elevPath[3]
-    if len(elevPath[0]) == 0:
-        data["popup_flag"] = 1
-    else:
-        data["popup_flag"] = 2
-    return data
+    return get_data_from_path(start, end, shortestPath, elevPath)
