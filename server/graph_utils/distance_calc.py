@@ -43,9 +43,17 @@ class distance_calculate:
             return self.nx_graph.nodes[end_node]["elevation"] - self.nx_graph.nodes[start_node]["elevation"] 
         return 
 
-    def get_route(self): 
-        # TODO: Implement route generation using osmnx 
-        pass
+    def get_route(self, mapping_parent_nodes, terminus): 
+        path = [terminus]
+        pointer = mapping_parent_nodes[terminus]
+        # since float('-inf') indicates that the topmost node has been reached 
+        # in the form of a reverse traversal from the terminal node. 
+        while pointer != float('-inf'):
+            path.append(pointer)
+            pointer = mapping_parent_nodes[pointer]
+        # the actual path is in the reverse direction 
+        path = path.reverse()
+        return path
     
     def get_elevation_cost(self): 
         # TODO: Implement cost computation for a particular path
@@ -55,8 +63,11 @@ class distance_calculate:
     # Implementation of Dijkstra's weighted shortest path algorithm 
     # weight of node decided dynamically as per given elevation cost 
     def get_dijkstra_distance(self): 
+        # stop search if either node is absent 
         if not self.begin_node or not self.terminal_node: 
             return 
+        
+        # define the start points for the weighted breadth-first search 
         temp_graph = self.nx_graph
         elevation = self.elevation_adjust 
         temp_shortest = self.shortest_distance 
@@ -70,6 +81,7 @@ class distance_calculate:
         # the start node cannot have a valid parent node 
         parent_node_map[start_node] = float('-inf')
         priority_map = {start_node: 0}
+        # start the traversal 
         while iterable_nodes is not None: 
             current_node = heappop(iterable_nodes)
             node = current_node.node 
@@ -100,7 +112,7 @@ class distance_calculate:
                         
                         next_distance = edge_length + distance
 
-                        if next_distance <= temp_shortest*(1.0 + elevation): 
+                        if next_distance <= temp_shortest*(elevation + 1.0): 
                             if(next_priority < previous_priority or not previous_priority):
                                 parent_node_map[neighbor] = node
                                 priority_map[neighbor] = next_priority
@@ -119,6 +131,8 @@ class distance_calculate:
         self.best_route.elevation_gain = drop_distance
         return
 
-
+    # TODO: Implement A-star search algorithm for finding the shortest path 
+    def get_a_star_distance(self): 
+        pass 
 
 
