@@ -2,18 +2,20 @@ import os
 import requests
 import geopy
 from flask import Flask, request, render_template
+from server.data_utils.utils import get_data
 import json
 
-app = Flask(__name__, static_url_path='', static_folder="../presentation/static",
-            template_folder="../presentation/templates")
-app.config.from_object(__name__)
+app = Flask(__name__)
+# app.config.from_object(__name__)
+print("I am gere 2")
 
-app.config.from_envvar('APP_CONFIG_FILE', silent=True)
+# app.config.from_envvar('APP_CONFIG_FILE', silent=True)
 
 MAPBOX_ACCESS_KEY = os.environ.get("MAPBOX_KEY", None)
 
 @app.route('/home')
-def presentation():
+def home():
+    print("I am in the home")
     return render_template(
         'presentation.html',
         ACCESS_KEY=MAPBOX_ACCESS_KEY
@@ -25,3 +27,8 @@ def get_route():
     route_data = get_data((data['start_location']['lat'], data['start_location']['lng']),
                           (data['end_location']['lat'], data['end_location']['lng']), data['x'], data['min_max'])
     return json.dumps(route_data)
+
+if __name__=='__main__':
+    print("I am here")
+    app.run(host='127.0.0.1', port=3000)
+
