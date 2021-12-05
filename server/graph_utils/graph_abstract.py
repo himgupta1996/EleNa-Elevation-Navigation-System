@@ -20,7 +20,8 @@ class AbstractGraph:
         delta_longitude = longitudeB_rad - longitudeA_rad
         delta_latitude = latitudeB_rad - latitudeA_rad
 
-        radial_distance_theta = np.sin(delta_latitude / 2)**2 + np.cos(latitudeA_rad) * np.cos(latitudeB_rad) * np.sin(delta_longitude / 2) **2
+        radial_distance_theta = np.sin(delta_latitude / 2)**2 + \
+        np.cos(latitudeA_rad) * np.cos(latitudeB_rad) * np.sin(delta_longitude / 2) ** 2
         radial_distance_metre = 2 * np.arctan2(np.sqrt(radial_distance_theta), np.sqrt(1 - radial_distance_theta))
         return radial_distance_metre * self.radius
 
@@ -38,7 +39,6 @@ class AbstractGraph:
         for node_location, node_data in nx_graph.nodes(data=True):
             longitudeB = nx_graph.nodes[node_location]['x']
             latitudeB = nx_graph.nodes[node_location]['y']
-            distance=self.distance(latitudeA, longitudeA, latitudeB, longitudeB)            
-            node_data['distance'] = distance
+            node_data['dist_from_dest'] = self.distance(latitudeA, longitudeA, latitudeB, longitudeB)            
         return nx_graph
     

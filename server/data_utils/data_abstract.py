@@ -1,9 +1,8 @@
-# from Elena.abstraction.abstraction import Graph_Abstraction
-# from Elena.control.algorithms import Algorithms
-# from Elena.control.settings import *
+# TODO: Change data object initialisation  
 from geopy.geocoders import Photon
 from server.graph_utils.graph_abstract import AbstractGraph
 from server.graph_utils.distance_calc import distance_calculate
+
 
 class DataAbstract(object):
     def __init__(self, logger):
