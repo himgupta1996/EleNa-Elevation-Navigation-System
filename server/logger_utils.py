@@ -8,6 +8,8 @@ class Logger(object):
 
     def get_logger(self):
         logging.basicConfig(level=logging.DEBUG)
+        logging.getLogger("requests").setLevel(logging.WARNING)
+        logging.getLogger("urllib3").setLevel(logging.WARNING)
         self.logger = logging.getLogger(__name__)
 
         # Create handlers

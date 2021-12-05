@@ -34,6 +34,7 @@ class DataAbstract(object):
         return self.geojson
 
     def get_data_from_path(self, start, end, shortest_path, elevated_path):
+
         if shortest_path is None and elevated_path is None:
             return self.data
         self.data["start"] = start
@@ -63,7 +64,7 @@ class DataAbstract(object):
 
         locator = Photon(user_agent="myGeocoder")
         print("The start point is", begin_point)
-        location = locator.reverse(end_point)
+        location = locator.reverse(begin_point)
         locate = location.address.split(',')
 
         len_location = len(locate)
@@ -83,10 +84,15 @@ class DataAbstract(object):
             print("Percent of Total path: ", elevation_ratio)
             print("Elevation Type: ", min_max)
         if not self.init:
-            abstract = AbstractGraph()
+            abstract = AbstractGraph(self.logger)
+
             self.nx_graph = abstract.generate(end_point)
-            self.algorithms = distance_calculate(self.nx_graph, elevation_adjust=elevation_ratio, elevation_type=min_max)
+            # self.logger("nx_graph", self.nx_graph)
+            self.algorithms = distance_calculate(self.logger, self.nx_graph, elevation_adjust=elevation_ratio, elevation_type=min_max)
+            # self.logger("algorithms", self.algorithms)
             self.init = True
         shortest_path, elevated_path = self.algorithms.shortest_path(begin_point, end_point, elevation_ratio, 
         elevation_type=min_max)
+        self.logger.debug(f"shortest path {shortest_path.__dict__}, elevated_path {elevated_path.__dict__}")
+        self.logger.debug(f"The elevated path is {elevated_path.__dict__}")
         return self.get_data_from_path(start, end, shortest_path, elevated_path)
