@@ -141,7 +141,7 @@ class distance_calculate:
         self.best_route_statistics.end_to_end_path = self.get_route(parent_node_map, end_node)[:]
         self.best_route_statistics.total_distance = distance 
         self.best_route_statistics.elevation_gain = self.get_elevation_cost(self.best_route_stats.end_to_end_path, "gain")
-        self.best_route_statistics.elevation_gain = self.get_elevation_cost(self.best_route_stats.end_to_end_path, "drop")
+        self.best_route_statistics.elevation_drop = self.get_elevation_cost(self.best_route_stats.end_to_end_path, "drop")
         return
 
     # TODO: Implement A-star search algorithm for finding the shortest path 
@@ -220,7 +220,7 @@ class distance_calculate:
             self.best_route_statistics.elevation_drop = float('inf')
             self.best_route_statistics.elevation_gain = float('-inf')
 
-    def shortest_path(self, begin_point, end_point, elevation, elevation_type = "max", log = True): 
+    def shortest_path(self, begin_point, end_point, elevation, elevation_type = "max"): 
         self.elevation_adjust = elevation / 100 
         self.begin_node = None  
         self.terminal_node = None  
@@ -276,8 +276,8 @@ class distance_calculate:
         # TODO: convey this information on the frontend? 
         if ((self.elevation_type == "max" and 
         self.best_route_statistics.elevation_gain < self.shortest_path_statistics.elevation_gain)
-        or self.elev_type == "min" and 
-        self.best_route_statistics.elevation_gain > self.shortest_path_statistics.elevation_gain):
+        or (self.elev_type == "min" and 
+        self.best_route_statistics.elevation_gain > self.shortest_path_statistics.elevation_gain)):
             self.best_route_statistics = self.shortest_path_statistics
         return self.shortest_path_statistics, self.best_route_statistics
 
