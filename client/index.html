@@ -44,16 +44,6 @@
             height: 100%;
         }
 
-        .info {
-            display: block;
-            position: relative;
-            margin: 0px auto;
-            border: none;
-            border-radius: 3px;
-            color: #222;
-
-        }
-
         .sidenav {
             height: 50px;
             width: 40%;
@@ -64,6 +54,23 @@
             background-color: #fff;
             overflow-x: hidden;
             padding: 5px;
+            transform: translate(-50%, 0);
+            border-radius: 25px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .terminal {
+            height: max-content;
+            width: max-content;
+            max-height: 80px;
+            overflow-y: hidden;
+            position: fixed;
+            font-size: 14px;
+            z-index: 1;
+            bottom: 40px;
+            left: 50%;
+            background-color: #fff;
+            overflow-x: hidden;
             transform: translate(-50%, 0);
             border-radius: 25px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -90,65 +97,36 @@
             transition: opacity 1.5s ease-in-out;
         }
 
-        .show {
-             opacity: 1;
-             pointer-events: all;
+
+
+        .terminal_col {
+            width: 0px;
+            opacity: 0;
+            pointer-events: none;
         }
 
-        .infonav {
-            height: 135;
-            width: 280;
-            position: fixed;
-            z-index: 1;
-            bottom: 80;
-            left: 10;
-            background-color: #B7B3B3;
-            overflow-x: hidden;
-            padding-top: 5px;
+        .show_terminal{
+            width: max-content;
+            opacity: 1;
+            pointer-events: all;
+            padding: 10px;
+        }
 
+        .show {
+            opacity: 1;
+            pointer-events: all;
         }
 
         .infonav-right {
-            height: 135;
-            width: 280;
+            height: 135px;
+            width: 280px;
             position: fixed;
             z-index: 1;
-            bottom: 80;
-            right: 10;
+            bottom: 80px;
+            right: 10px;
             background-color: #B7B3B3;
             overflow-x: hidden;
             padding-top: 5px;
-        }
-
-        .msg {
-            /* display: block; */
-            position: relative;
-            margin: 0px auto;
-            border: none;
-            border-radius: 3px;
-            color: #222;
-
-        }
-
-        .button {
-            position: relative;;
-            background-color: grey; /* Green */
-            border: none;
-            color: whitesmoke;
-            padding: 15px 32px;
-            text-align: center;
-
-
-        }
-
-        .button:active:enabled {
-            background-color: #3a3a42;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
-        }
-
-        .button:hover:enabled {
-            background-color: darkgray
         }
 
         #loading {
@@ -169,71 +147,6 @@
             position: fixed; /* or absolute */
             top: 50%;
             left: 50%;
-        }
-
-        .reset-button {
-            display: inline-block;
-            border-radius: 20px;
-            padding: 2px;
-            margin: 10px;
-            min-width: 100px;
-            height: 24px;
-            text-align: center;
-            text-overflow: ellipsis;
-            text-transform: uppercase;
-            color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
-            background-color: rgb(var(--pure-material-primary-rgb, 51, 51, 51));
-            font-family: var(--pure-material-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
-            box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-            font-size: 12px;
-            font-weight: 500;
-            line-height: 16px;
-            overflow: hidden;
-            outline: none;
-            cursor: pointer;
-            transition: box-shadow 0.2s;
-            box-sizing: border-box;
-            border: none;
-        }
-
-        .calculate-button {
-            display: inline-block;
-            margin: 10px;
-            border-radius: 20px;
-            padding: 2px;
-            min-width: 100px;
-            height: 24px;
-            text-align: center;
-            text-overflow: ellipsis;
-            text-transform: uppercase;
-            color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
-            background-color: rgb(var(--pure-material-primary-rgb, 51, 51, 51));
-            font-family: var(--pure-material-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
-            box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-            font-size: 12px;
-            font-weight: 500;
-            line-height: 16px;
-            overflow: hidden;
-            outline: none;
-            cursor: pointer;
-            transition: box-shadow 0.2s;
-            box-sizing: border-box;
-            border: none;
-        }
-
-        .calculate-button:disabled {
-            color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
-            background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.12);
-            box-shadow: none;
-            cursor: initial;
-        }
-
-        .calculate-button:disabled::before {
-            opacity: 0;
-        }
-
-        .calculate-button:disabled::after {
-            opacity: 0;
         }
 
         .equal-divide {
@@ -260,14 +173,21 @@
         }
 
         .btn:focus {
-          outline: none;
-          box-shadow: none;
+            outline: none;
+            box-shadow: none;
         }
 
-        .btn{
+        .btn {
             font-size: 14px;
             line-height: 1;
             padding: .25rem .5rem;
+        }
+
+        #loading-image{
+            height: 100px;
+            width: 200px;
+            left: 50%;
+            transform: translate(-50%, 0);
         }
 
     </style>
@@ -329,6 +249,25 @@
     <div id="dist_2" style="display: inline ; top: 37px; left: 1055px; padding: 1px; color: blue"></div>
 </div>
 
+<div class="dashboard">
+    <div class="container">
+        <div class="row row-cols-3">
+            <div class="col"></div>
+            <div class="col">Elena</div>
+            <div class="col">Shortest</div>
+            <div class="col">Gain</div>
+            <div class="col" id="gain_1"></div>
+            <div class="col" id="gain_2"></div>
+            <div class="col">Drop</div>
+            <div class="col" id="drop_1"></div>
+            <div class="col" id="drop_2"></div>
+            <div class="col">Shortest</div>
+            <div class="col" id="dist_1"></div>
+            <div class="col" id="dist_2"></div>
+        </div>
+    </div>
+</div>
+
 <div class="location">
     <img src="compass.png" width="18" height="18"/>
     <div id='lat' style="display: inline-block; padding: 1px"></div>
@@ -336,13 +275,21 @@
     <div id='long' style="display: inline-block; padding: 1px"></div>
 </div>
 
-<div id="info" class="infonav">
-    <div id="start" style="bottom:155px; left: 20px; max-width: 250px; padding: 1px"> Start Location:</div>
-    <div id="end" style="bottom:185px; left: 20px; max-width: 250px; padding: 1px"> End Location:</div>
+<div id="info" class="terminal">
+    <div class="row terminal_col">
+        <div id="start_col" class="col text-center terminal_col">
+            <img src="start.png" width="30" height="30"/>
+            <div id="start" ></div>
+        </div>
+        <div id="end_col" class="col text-center terminal_col">
+            <img src="end.png" width="30" height="30"/>
+            <div id="end" ></div>
+        </div>
+    </div>
 </div>
 
 <div id="loading">
-    <img id="loading-image" src="/map_loader.gif" alt="Loading..." style="top: 80; left: 300"/>
+    <img id="loading-image" src="/map_loader.gif" alt="Loading..."/>
 </div>
 
 <script>
@@ -375,11 +322,11 @@
     var _delay = setInterval(delayCheck, 500);
 
     function delayCheck() {
-      if (timedelay == 3) {
-        $('.location').removeClass("show");
-        timedelay = 1;
-      }
-      timedelay = timedelay + 1;
+        if (timedelay == 3) {
+            $('.location').removeClass("show");
+            timedelay = 1;
+        }
+        timedelay = timedelay + 1;
     }
 
     map.on("load", () => {
@@ -426,7 +373,9 @@
 
         console.log(JSON.stringify(e.lngLat))
         if (!start_flag) {
-            document.getElementById('start').innerHTML = "Start Location:(" + Math.round(e.lngLat["lat"] * 10000) / 10000 + "," + Math.round(e.lngLat["lng"] * 10000) / 10000 + ")";
+            $('.row').addClass("show_terminal");
+            $('#start_col').addClass("show_terminal");
+            document.getElementById('start').innerHTML = "(" + Math.round(e.lngLat["lat"] * 10000) / 10000 + "," + Math.round(e.lngLat["lng"] * 10000) / 10000 + ")";
             start_loc = JSON.stringify(e.lngLat);
             start_flag = true;
             m1 = new mapboxgl.Marker({color: 'red'})
@@ -434,7 +383,8 @@
                 .addTo(map);
             map.flyTo({center: lngLat});
         } else if (!end_flag) {
-            document.getElementById('end').innerHTML = "End Location:(" + Math.round(e.lngLat["lat"] * 10000) / 10000 + "," + Math.round(e.lngLat["lng"] * 10000) / 10000 + ")";
+            $('#end_col').addClass("show_terminal");
+            document.getElementById('end').innerHTML = "(" + Math.round(e.lngLat["lat"] * 10000) / 10000 + "," + Math.round(e.lngLat["lng"] * 10000) / 10000 + ")";
             end_loc = JSON.stringify(e.lngLat);
             m2 = new mapboxgl.Marker({color: 'blue'})
                 .setLngLat(e.lngLat)
@@ -445,8 +395,8 @@
     });
 
     function reset() {
-        document.getElementById('start').innerHTML = "Start Location: ";
-        document.getElementById('end').innerHTML = "End Location: ";
+        document.getElementById('start').innerHTML = "";
+        document.getElementById('end').innerHTML = "";
         document.getElementById('calc_route').innerHTML = "Calculate"
         document.getElementById("calc_route").disabled = true;
         document.getElementById('x').value = 0;
@@ -456,6 +406,9 @@
         start_loc = "";
         start_flag = false;
         end_loc = "";
+        $('#start_col').removeClass("show_terminal");
+        $('#end_col').removeClass("show_terminal");
+        $('.row').removeClass("show_terminal");
         m1.remove();
         m2.remove();
         end_flag = false;
@@ -567,8 +520,8 @@
         });
         console.log("Routes Drawn");
         document.getElementById('info').style.height = "260px";
-        document.getElementById('start').innerHTML = "Start Location: " + data["start"];
-        document.getElementById('end').innerHTML = "End Location: " + data["end"];
+        document.getElementById('start').innerHTML = data["start"];
+        document.getElementById('end').innerHTML = data["end"];
         document.getElementById('end').style.top = "245px";
         document.getElementById('start').style.top = "150px";
         document.getElementById('calc_route').innerHTML = "Re-Calculate";
