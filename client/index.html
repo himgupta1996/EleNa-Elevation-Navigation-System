@@ -19,197 +19,10 @@
 
     <link rel="stylesheet" type="text/css" href="styles/button-style.css">
     <link rel="stylesheet" type="text/css" href="styles/text_styles.css">
-    <style>
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+    <link rel="stylesheet" type="text/css" href="styles/my_styles.css">
 
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        #wrapper {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-        }
-
-        #map {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .sidenav {
-            height: 50px;
-            width: 40%;
-            position: fixed;
-            z-index: 1;
-            top: 40px;
-            left: 50%;
-            background-color: #fff;
-            overflow-x: hidden;
-            padding: 5px;
-            transform: translate(-50%, 0);
-            border-radius: 25px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
-
-        .terminal {
-            height: max-content;
-            width: max-content;
-            max-height: 80px;
-            overflow-y: hidden;
-            position: fixed;
-            font-size: 14px;
-            z-index: 1;
-            bottom: 40px;
-            left: 50%;
-            background-color: #fff;
-            overflow-x: hidden;
-            transform: translate(-50%, 0);
-            border-radius: 25px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
-
-        .location {
-            height: 30px;
-            width: 180px;
-            position: fixed;
-            font-size: 14px;
-            z-index: 1;
-            text-align: center;
-            overflow-y: hidden;
-            top: 110px;
-            left: 50%;
-            background-color: #fff;
-            overflow-x: hidden;
-            padding: 5px;
-            transform: translate(-50%, 0);
-            border-radius: 25px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 1.5s ease-in-out;
-        }
-
-        .dashboard{
-            height: max-content;
-            position: fixed;
-            font-size: 14px;
-            width: 400px;
-            z-index: 1;
-            text-align: center;
-            overflow-y: hidden;
-            bottom: 40px;
-            right: 40px;
-            background-color: #fff;
-            overflow-x: hidden;
-            padding: 5px;
-            border-radius: 25px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .terminal_col {
-            width: 0px;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .show_terminal{
-            width: max-content;
-            opacity: 1;
-            pointer-events: all;
-            padding: 10px;
-        }
-
-        .show {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .infonav-right {
-            height: 135px;
-            width: 280px;
-            position: fixed;
-            z-index: 1;
-            bottom: 80px;
-            right: 10px;
-            background-color: #B7B3B3;
-            overflow-x: hidden;
-            padding-top: 5px;
-        }
-
-        #loading {
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            position: fixed;
-            display: block;
-            opacity: 0.7;
-            background-color: #fff;
-            z-index: 99;
-            text-align: center;
-        }
-
-        #loading-image {
-            z-index: 100;
-            position: fixed; /* or absolute */
-            top: 50%;
-            left: 50%;
-        }
-
-        .equal-divide {
-            width: 32%;
-            display: inline-block;
-            text-align: center;
-            vertical-align: middle;
-            height: 40px;
-            line-height: 40px;
-            font-size: 15px;
-        }
-
-        .container-sidenav {
-            height: 100%;
-            width: 100%;
-            position: relative;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        #dropdown {
-            width: 100px !important;
-            display: inline-block;
-        }
-
-        .btn:focus {
-            outline: none;
-            box-shadow: none;
-        }
-
-        .btn {
-            font-size: 14px;
-            line-height: 1;
-            padding: .25rem .5rem;
-        }
-
-        #loading-image{
-            height: 100px;
-            width: 200px;
-            left: 50%;
-            transform: translate(-50%, 0);
-        }
-
-    </style>
 </head>
-<body>
+
 <body>
 <div id="wrapper">
     <div id="map"></div>
@@ -218,9 +31,9 @@
     <div class="container-sidenav">
 
         <div class="equal-divide">
-            <label for="threshold">Elevation max path limit: <input type="number" id="x" min="0" name="threshold"
-                                                                    value=0
-                                                                    style="width: 50px; left: 290px; top:25; padding: 1px; text-align: center; border: none;"></label>
+            <label for="threshold">Elevation max path limit:
+                <input type="number" id="x" min="0" name="threshold" value=0
+                       style="width: 50px; left: 290px; top:25px; padding: 1px; text-align: center; border: none;"></label>
         </div>
 
         <div class="equal-divide">
@@ -267,11 +80,11 @@
     <div class="row terminal_row terminal_col">
         <div id="start_col" class="col text-center terminal_col">
             <img src="start.png" width="30" height="30"/>
-            <div id="start" ></div>
+            <div id="start"></div>
         </div>
         <div id="end_col" class="col text-center terminal_col">
             <img src="end.png" width="30" height="30"/>
-            <div id="end" ></div>
+            <div id="end"></div>
         </div>
     </div>
 </div>
