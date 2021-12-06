@@ -97,7 +97,24 @@
             transition: opacity 1.5s ease-in-out;
         }
 
-
+        .dashboard{
+            height: max-content;
+            position: fixed;
+            font-size: 14px;
+            width: 400px;
+            z-index: 1;
+            text-align: center;
+            overflow-y: hidden;
+            bottom: 40px;
+            right: 40px;
+            background-color: #fff;
+            overflow-x: hidden;
+            padding: 5px;
+            border-radius: 25px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            opacity: 0;
+            pointer-events: none;
+        }
 
         .terminal_col {
             width: 0px;
@@ -221,50 +238,21 @@
         </div>
     </div>
 </div>
-<div class="infonav-right">
-    <label style="display: inline ; top: 9px; left: 660px; padding: 1px; color: #B01F00">Elena:</label>
-
-    <label style="display: inline ; top: 9px; left: 730px; padding: 1px; color: #B01F00">Gain: </label>
-    <div id="gain_1" style="display: inline ; top: 9px; left: 775px; padding: 1px; color: #B01F00"></div>
-
-    <label style="display: inline ; top: 9px; left: 850px; padding: 1px; color: #B01F00">Drop: </label>
-    <div id="drop_1" style="display: inline ; top: 9px; left: 895px; padding: 1px; color: #B01F00"></div>
-
-    <label style="display: inline ; top: 9px; left: 980px; padding: 1px; color: #B01F00">Distance: </label>
-    <div id="dist_1" style="display: inline ; top: 9px; left: 1055px; padding: 1px; color: #B01F00"></div>
-
-
-    <hr style="top: 23px; left: 645px; width: 600px; border-bottom: 1px solid #8A8888;">
-    <label style="display: inline; top: 37px; left: 650px; padding: 1px; color: blue">Shortest:</label>
-    <div style="border-right: 1px solid #8A8888; height: 54px; display: inline; left: 720px"></div>
-
-    <label style="display: inline ; top: 37px; left: 730px; padding: 1px; color: blue">Gain: </label>
-    <div id="gain_2" style="display: inline ; top: 37px; left: 775px; padding: 1px; color: blue"></div>
-
-
-    <label style="display: inline ; top: 37px; left: 850px; padding: 1px; color: blue">Drop: </label>
-    <div id="drop_2" style="display: inline ; top: 37px; left: 895px; padding: 1px; color: blue"></div>
-
-    <label style="display: inline ; top: 37px; left: 980px; padding: 1px; color: blue">Distance: </label>
-    <div id="dist_2" style="display: inline ; top: 37px; left: 1055px; padding: 1px; color: blue"></div>
-</div>
 
 <div class="dashboard">
-    <div class="container">
-        <div class="row row-cols-3">
-            <div class="col"></div>
-            <div class="col">Elena</div>
-            <div class="col">Shortest</div>
-            <div class="col">Gain</div>
-            <div class="col" id="gain_1"></div>
-            <div class="col" id="gain_2"></div>
-            <div class="col">Drop</div>
-            <div class="col" id="drop_1"></div>
-            <div class="col" id="drop_2"></div>
-            <div class="col">Shortest</div>
-            <div class="col" id="dist_1"></div>
-            <div class="col" id="dist_2"></div>
-        </div>
+    <div class="row row-cols-3">
+        <div class="col"></div>
+        <div class="col">Elena</div>
+        <div class="col">Shortest</div>
+        <div class="col">Gain:</div>
+        <div class="col" id="gain_1"></div>
+        <div class="col" id="gain_2"></div>
+        <div class="col">Drop:</div>
+        <div class="col" id="drop_1"></div>
+        <div class="col" id="drop_2"></div>
+        <div class="col">Shortest:</div>
+        <div class="col" id="dist_1"></div>
+        <div class="col" id="dist_2"></div>
     </div>
 </div>
 
@@ -276,7 +264,7 @@
 </div>
 
 <div id="info" class="terminal">
-    <div class="row terminal_col">
+    <div class="row terminal_row terminal_col">
         <div id="start_col" class="col text-center terminal_col">
             <img src="start.png" width="30" height="30"/>
             <div id="start" ></div>
@@ -373,7 +361,7 @@
 
         console.log(JSON.stringify(e.lngLat))
         if (!start_flag) {
-            $('.row').addClass("show_terminal");
+            $('.terminal_row').addClass("show_terminal");
             $('#start_col').addClass("show_terminal");
             document.getElementById('start').innerHTML = "(" + Math.round(e.lngLat["lat"] * 10000) / 10000 + "," + Math.round(e.lngLat["lng"] * 10000) / 10000 + ")";
             start_loc = JSON.stringify(e.lngLat);
@@ -408,7 +396,8 @@
         end_loc = "";
         $('#start_col').removeClass("show_terminal");
         $('#end_col').removeClass("show_terminal");
-        $('.row').removeClass("show_terminal");
+        $('.terminal_row').removeClass("show_terminal");
+        $('.dashboard').removeClass("show");
         m1.remove();
         m2.remove();
         end_flag = false;
@@ -456,7 +445,7 @@
         if (map.getSource("ele_route")) {
             map.removeSource("ele_route");
         }
-
+        $('.dashboard').removeClass("show");
         document.getElementById('gain_1').innerHTML = "";
         document.getElementById('gain_2').innerHTML = "";
         document.getElementById('drop_1').innerHTML = "";
@@ -519,6 +508,7 @@
             }
         });
         console.log("Routes Drawn");
+        $('.dashboard').addClass("show");
         document.getElementById('info').style.height = "260px";
         document.getElementById('start').innerHTML = data["start"];
         document.getElementById('end').innerHTML = data["end"];
