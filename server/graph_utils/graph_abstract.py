@@ -1,47 +1,60 @@
-import osmnx as map
+import osmnx as ox
 import networkx as nx
+import os
 import numpy as np
-import os 
-import pickle as p 
+import pickle as p
 
-class AbstractGraph:
-    def __init__(self, logger):
+class Graph_Abstraction:
+    def __init__(self):
+        print("Initializing the model")        
+        self.GOOGLEAPIKEY="AIzaSyCJgTZU8StpSFsIulOvO40iF684-g6m4IA"      
+        if os.path.exists("server/graph_utils/graph.p"):
+            self.G = p.load( open( "server/graph_utils/graph.p", "rb" ) )
+            self.init = True
+            print("Graph loaded")
+        else:
+            self.init = False
+
+    def elevation_graph(self, G):
+        # Returns networkx graph with eleveation data and rise or fall grade.
+        G = ox.add_node_elevations(G, api_key=self.GOOGLEAPIKEY)        
+        return G
+
+    def dist_nodes(self,lat1,long1,lat2,long2):
+		# Given latitudes and longitudes of two nodes, returns the distance between them.
+        radius=6371008.8 # Earth radius
         
-        # hard code constants 
-        self.API_KEY = "AIzaSyCJgTZU8StpSFsIulOvO40iF684-g6m4IA"
-        self.radius = 6371008.8
-        # UMass Amherst is the start point 
-        self.start = [42.384803, -72.529262]
-        self.logger = logger 
+        lat1, long1 = np.radians(lat1), np.radians(long1)
+        lat2, long2 = np.radians(lat2),np.radians(long2)
 
-    # calculate the physical "metre" distance between 2 points given coordinates 
-    def distance(self, latitudeA, longitudeA, latitudeB, longitudeB):
-        latitudeA_rad = np.radians(latitudeA) 
-        longitudeA_rad = np.radians(longitudeA)
-        latitudeB_rad = np.radians(latitudeB)
-        longitudeB_rad = np.radians(longitudeB)
+        dlong,dlat = long2 - long1,lat2 - lat1
 
-        delta_longitude = longitudeB_rad - longitudeA_rad
-        delta_latitude = latitudeB_rad - latitudeA_rad
+        temp1 = np.sin(dlat / 2)**2 + np.cos(lat1) * np.cos(lat2) * np.sin(dlong / 2)**2
+        temp2 = 2 * np.arctan2(np.sqrt(temp1), np.sqrt(1 - temp1))
+        return radius * temp2
 
-        radial_distance_theta = np.sin(delta_latitude / 2)**2 + \
-        np.cos(latitudeA_rad) * np.cos(latitudeB_rad) * np.sin(delta_longitude / 2) ** 2
-        radial_distance_metre = 2 * np.arctan2(np.sqrt(radial_distance_theta), np.sqrt(1 - radial_distance_theta))
-        return radial_distance_metre * self.radius
+    def add_dist_frm_endpt(self,G,endpt):
+        #Distance from all nodes in the graph to the final destination is added
+        end_node=G.nodes[ox.get_nearest_node(G, point=endpt)]
+        lat1, long1 =end_node["y"],end_node["x"]        
+        for node,data in G.nodes(data=True):
+            lat2=G.nodes[node]['y']
+            long2=G.nodes[node]['x']
+            distance=self.dist_nodes(lat1,long1,lat2,long2)            
+            data['dist_from_dest'] = distance
+            
+        return G
 
-    # generate the initial graph 
-    def generate(self, terminal_point): 
-        self.nx_graph = None    
-        self.graph = p.load(open("server/graph_utils/graph.p", "rb"))       
-        self.nx_graph = self.distance_from_endpoint(self.graph, terminal_point)
-        return self.nx_graph
-
-    def distance_from_endpoint(self, nx_graph, endpt):
-        terminal_point = nx_graph.nodes[map.get_nearest_node(nx_graph, point=endpt)]
-        longitudeA = terminal_point["x"]   
-        latitudeA = terminal_point["y"]    
-        for node_location, node_data in nx_graph.nodes(data=True):
-            longitudeB = nx_graph.nodes[node_location]['x']
-            latitudeB = nx_graph.nodes[node_location]['y']
-            node_data['dist_from_dest'] = self.distance(latitudeA, longitudeA, latitudeB, longitudeB)            
-        return nx_graph
+    def get_graph(self, endpt):    
+        #Returns elevation data with the graph.
+   
+        start = [42.384803, -72.529262]
+        if not self.init:
+            print("Loading the Graph")
+            self.G = ox.graph_from_point(start, distance=20000, network_type='walk')
+            self.G = self.elevation_graph(self.G)                         
+            p.dump( self.G, open( "server/graph_utils/graph.p", "wb" ))
+            self.init = True
+            print("The Graph has been saved")
+        self.G = self.add_dist_frm_endpt(self.G,endpt)
+        return self.G
