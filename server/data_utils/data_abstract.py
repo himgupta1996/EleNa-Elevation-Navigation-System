@@ -36,6 +36,7 @@ class DataAbstract(object):
     def get_data_from_path(self, start, end, shortest_path, elevated_path):
 
         if shortest_path is None and elevated_path is None:
+            self.initialize_data()
             return self.data
         self.data["start"] = start
         self.data["end"] = end
@@ -61,7 +62,6 @@ class DataAbstract(object):
     def get_data(self, begin_point, end_point, elevation_ratio, min_max, log=True):
         # gets data for plotting the routes.
         self.initialize_data()
-
         locator = Photon(user_agent="myGeocoder")
         print("The start point is", begin_point)
         location = locator.reverse(begin_point)
