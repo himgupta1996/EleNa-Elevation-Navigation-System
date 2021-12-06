@@ -6,7 +6,7 @@ from server.data_utils.data_abstract import DataAbstract
 from server.logger_utils import Logger
 import json
 
-app = Flask(__name__)
+app = Flask(__name__,static_url_path = '', static_folder = "../client/static", template_folder = "../client/")
 # app.config.from_object(__name__)
 print("I am gere 2")
 
@@ -20,17 +20,17 @@ data_abstract = DataAbstract(logger)
 
 # app.config.from_envvar('APP_CONFIG_FILE', silent=True)
 
-MAPBOX_ACCESS_KEY = os.environ.get("MAPBOX_KEY", None)
+MAPBOX_ACCESS_KEY = "pk.eyJ1IjoiYmhhbnViaGFuZGFyaSIsImEiOiJja3dxdDU0Z20wYjJ1MnBudzYwaW96dzRxIn0.6dxya_VrZh-qazlsFUTzwg"
 
 @app.route('/home')
 def home():
     logger.error("I am in Home")
     return render_template(
-        'presentation.html',
+        'index.html',
         ACCESS_KEY=MAPBOX_ACCESS_KEY
     )
 
-@app.route('/route', methods=['GET'])
+@app.route('/route', methods=['POST'])
 def get_route():
     data = request.get_json(force=True)
     print(data)
