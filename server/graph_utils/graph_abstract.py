@@ -30,11 +30,10 @@ class AbstractGraph:
         return radial_distance_metre * self.radius
 
     # generate the initial graph 
-    def generate(self, terminal_point):    
-        self.nx_graph = p.load( open("server/graph_utils/graph.p", "rb" ))
-        # self.nx_graph = map.graph_from_point(self.start, distance=20000, network_type='walk')
-        # self.nx_graph = map.add_node_elevations(self.nx_graph, api_key=self.API_KEY)                        
-        self.nx_graph = self.distance_from_endpoint(self.nx_graph, terminal_point)
+    def generate(self, terminal_point): 
+        self.nx_graph = None    
+        self.graph = p.load(open("server/graph_utils/graph.p", "rb"))       
+        self.nx_graph = self.distance_from_endpoint(self.graph, terminal_point)
         return self.nx_graph
 
     def distance_from_endpoint(self, nx_graph, endpt):
