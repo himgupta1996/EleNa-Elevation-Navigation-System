@@ -33,8 +33,7 @@ def home():
 @app.route('/route', methods=['POST'])
 def get_route():
     data = request.get_json(force=True)
-    print(data)
-    logger.debug(data)
+    data_abstract = DataAbstract(logger)
     route_data = data_abstract.get_data((data['start_location']['lat'], data['start_location']['lng']),
                           (data['end_location']['lat'], data['end_location']['lng']), data['x'], data['min_max'])
     return json.dumps(route_data)

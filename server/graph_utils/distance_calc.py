@@ -233,6 +233,7 @@ class distance_calculate:
         target=self.terminal_node, weight = self.osmnx_weight)
         self.logger.debug(f"the shortest route is {self.shortest_route}")
         self.shortest_distance  = sum(osmnx.get_route_edge_attributes(nx_graph, self.shortest_route, 'length'))
+        self.shortest_path_statistics.end_to_end_path = []
         for node in self.shortest_route: 
             self.shortest_path_statistics.end_to_end_path.append([nx_graph.nodes[node]['x'], nx_graph.nodes[node]['y']])
         # self.logger.debug(f"the shortest route is {self.shortest_route}")
