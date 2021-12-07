@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="311c3cc2-9f90-4ebe-b59f-a35c2a708440" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/data_utils/data_abstract.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/data_utils/data_abstract.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/graph_utils/distance_calc.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/graph_utils/distance_calc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/graph_utils/graph_abstract.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/graph_utils/graph_abstract.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/logger_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/logger_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/logs/server.log" beforeDir="false" afterPath="$PROJECT_DIR$/server/logs/server.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +31,24 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/files" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -51,6 +65,8 @@
       <updated>1638664613107</updated>
       <workItem from="1638664615055" duration="691000" />
       <workItem from="1638665320469" duration="22295000" />
+      <workItem from="1638748049911" duration="3524000" />
+      <workItem from="1638842849809" duration="2038000" />
     </task>
     <servers />
   </component>
@@ -67,5 +83,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
