@@ -43,7 +43,7 @@ npm install
 ```
 
 ## How to build the app ?
-Run Flask server using command: ""
+Run Flask server using command: "python -m flask run"
 
 ## How to run app ?
 
@@ -52,21 +52,7 @@ After installing the required dependencies and building the app server as mentio
 
 * The flask server server would start by on port ``8080``. Please make sure the port is free for use.
 * Flask server URL ``http://127.0.0.1:8080/``
-* Start the flask server using the command
-
-
-```
-python src/App/ElenaApp.py
-
-```
-
-* npm server would start on port ``3000``. Please make sure the port is free for use
-* npm server URL : ``http://127.0.0.1:3000/``
-* Start the npm server using the command
-
-```
-npm start
-```
+   
 # Test Suites
 
 Unit test have been added for our application.
