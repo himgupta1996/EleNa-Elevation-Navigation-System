@@ -23,9 +23,7 @@ minimize elevation gain.
 
 ## How to install ?
 The following versions have been used for building and installing the dependencies
-* Python 3.3
-* npm 6.14.8
-
+* Python 3.8
 
 Create virtual environment ( This is an optional step, the application can be install using system level python as well)
 https://docs.python.org/3/tutorial/venv.html
@@ -39,7 +37,6 @@ Install dependencies / requirements using the command
 ```
 pip install -r src/requirements.txt
 
-npm install
 ```
 
 ## How to build the app ?
@@ -50,11 +47,11 @@ Run Flask server using command: "python -m flask run"
 After installing the required dependencies and building the app server as mentioned above, follow the steps to start the server.
 
 
-* The flask server server would start by on port ``8080``. Please make sure the port is free for use.
-* Flask server URL ``http://127.0.0.1:8080/``
+* The flask server server would start by on port ``5000``. Please make sure the port is free for use.
+* Flask server URL ``http://127.0.0.1:5000/``
    
 # Test Suites
 
 Unit test have been added for our application.
 
-Unit test location : `` server/tests/test_home.py``
+Unit test location : `` server/tests/test.py``
