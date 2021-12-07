@@ -24,7 +24,8 @@ body {
 
 .sidenav {
     height: 50px;
-    width: 40%;
+    width: 80%;
+    max-width: 800px;
     position: fixed;
     z-index: 1;
     top: 40px;
@@ -75,6 +76,14 @@ body {
     transition: opacity 1.5s ease-in-out;
 }
 
+.red{
+    background-color: lightcoral;
+}
+
+.blue{
+    background-color: lightblue;
+}
+
 .dashboard {
     height: max-content;
     position: fixed;
@@ -83,11 +92,12 @@ body {
     z-index: 1;
     text-align: center;
     overflow-y: hidden;
-    bottom: 40px;
-    right: 40px;
+    top: 170px;
+    left: 50%;
     background-color: #fff;
     overflow-x: hidden;
-    padding: 5px;
+    transform: translate(-50%, 0);
+    padding: 0px;
     border-radius: 25px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     opacity: 0;
@@ -163,7 +173,7 @@ body {
 }
 
 #dropdown {
-    width: 100px !important;
+    width: 120px !important;
     display: inline-block;
 }
 
