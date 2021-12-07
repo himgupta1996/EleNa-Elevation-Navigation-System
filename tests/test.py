@@ -9,13 +9,11 @@ from server.data_utils.data_abstract import DataAbstract
 from server.graph_utils.distance_calc import * 
 from server.graph_utils.graph_abstract import * 
 
-
-
 def Test(value = ""):
     def temp(function):
         def condition(*args, **kwargs):
             try:
-                function(args,*kwargs)
+                function(*args,**kwargs)
                 print("Passed :)" ) # if a condition passes
                 print()
             except Exception as error:
@@ -28,7 +26,6 @@ def Test(value = ""):
 @Test("")
 def test_get_graph(end):
     print("# Testing the get_graph method......")
-
     abstract = Graph_Abstraction()
     G = abstract.get_graph(end)
     assert isinstance(G, nx.classes.multidigraph.MultiDiGraph)
@@ -45,7 +42,7 @@ def test_get_route(A):
 @Test("")
 def test_get_shortest_path():
 
-    print("# Testing get_shortest_path method......") 
+    print("# Testing get_shortest_path method.....") 
     x = 100.0 
     
     startpt=(42.3762, -72.5148)
@@ -56,19 +53,19 @@ def test_get_shortest_path():
 
     A = Algorithms(G, elevation_adjust = 100.0)
 
-    shortest_path, best_path = A.get_shortest_path(startpt, endpt, x, elev_type = "maximize", log = False)
+    shortest_path, best_path = A.get_shortest_path(startpt, endpt, x, elevation_type = "maximize", log = False)
     assert best_path[1] <= (1 + x/100.0)*shortest_path[1]
     assert best_path[2] >= shortest_path[2]
 
     startpt= (42.3762, -72.5148)
     endpt= (42.3948, -72.5266)
-    shortest_path, best_path = A.get_shortest_path(startpt, endpt, x, elev_type = "minimize", log = False)
+    shortest_path, best_path = A.get_shortest_path(startpt, endpt, x, elevation_type = "minimize", log = False)
     assert best_path[1] <= (1 + x/100.0)*shortest_path[1]
     assert best_path[2] <= shortest_path[2]
 
 @Test("")
 def test_get_Elevation(A):
-    print("# Testing get_Elevation method....")
+    print("# Testing get_Elevation method...")
 
     route = [0, 3, 4, 2]
     c, p = A.get_Elevation(route, cost_type = "both", isPiecewise = True)
@@ -102,7 +99,7 @@ def test_get_Elevation(A):
 
 @Test("")
 def test_get_cost(A, n1 = 0, n2 = 1):
-    print("# Testing get_cost method....")
+    print("# Testing get_cost method in algorithms.py(control)....")
 
     c = A.get_cost(0, 1, cost_type = "normal")
     assert isinstance(c, float)
@@ -142,7 +139,7 @@ def test_get_cost(A, n1 = 0, n2 = 1):
 
 @Test("")
 def test_get_geojson(location):
-    print("# Testing get_geojson method...........")
+    print("# Testing get_geojson method....")
     new = DataAbstract()    
     json = new.get_geojson(location)
     assert isinstance(json, dict)
@@ -150,7 +147,7 @@ def test_get_geojson(location):
 
 @Test("")
 def test_get_data(start, end, elevation_adjust = 100, min_max = "maximize"):
-    print("# Testing get_data method...........")
+    print("# Testing get_data.....")
     new = DataAbstract()    
     d = new.get_data(start, end, elevation_adjust, min_max, log=False)
     locator = Photon(user_agent="myGeocoder")
@@ -172,7 +169,7 @@ def test_get_data(start, end, elevation_adjust = 100, min_max = "maximize"):
     assert end_loc == d["end"]
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     start, end = (42.373222, -72.519852), (42.375544, -72.524210)
     
     G = nx.Graph()
@@ -186,7 +183,7 @@ if _name_ == "_main_":
         G.nodes[i]["elevation"] = e
     
     A = Algorithms(G, elevation_adjust = 0.0)
-
+    # Tests #####
     test_get_graph(end)
     test_get_route(A)
     test_get_shortest_path()
@@ -194,3 +191,5 @@ if _name_ == "_main_":
     test_get_cost(A)
     test_get_geojson(start)
     test_get_data(start, end)
+
+
