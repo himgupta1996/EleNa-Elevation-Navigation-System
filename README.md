@@ -12,7 +12,7 @@ minimize elevation gain.
 
 
 # Architecture
-![Alt text](files/ArchitectureDiagram.png?raw=true "Elena")
+![Alt text](files/ArchitectureDiagram.PNG?raw=true "Elena")
 
 
 # UI
