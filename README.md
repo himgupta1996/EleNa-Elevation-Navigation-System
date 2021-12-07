@@ -23,7 +23,7 @@ minimize elevation gain.
 
 ## How to install ?
 The following versions have been used for building and installing the dependencies
-* Python 2.7
+* Python 3.3
 * npm 6.14.8
 
 
@@ -42,8 +42,8 @@ pip install -r src/requirements.txt
 npm install
 ```
 
-## How to build and install ?
-
+## How to build the app ?
+Run Flask server using command: ""
 
 ## How to run app ?
 
