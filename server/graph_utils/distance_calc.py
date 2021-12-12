@@ -5,6 +5,8 @@ from heapq import *
 import time
 
 class Algorithms:
+
+    # Function to initialize the nesscessary class variables 
     def __init__(self, G, elevation_adjust = 0.0, elevation_type = "maximize"):
         self.G = G
         self.elevation_type = elevation_type
@@ -13,9 +15,8 @@ class Algorithms:
         self.start_node= None
         self.end_node =None
 
+    # Function to compute cost between two given nodes node1, node2 with the given cost_type 
     def get_cost(self, node1, node2, cost_type = "normal"):
-        
-        # Compute cost between two given nodes node1, node2 with the given cost_type .
         G = self.G
         if node1 is None or node2 is None : 
             return 
@@ -34,9 +35,8 @@ class Algorithms:
             return abs(G.nodes[node1]["elevation"] - G.nodes[node2]["elevation"])
         
 
-
+    # Function to compute total cost or piecewise cost for a given route
     def get_Elevation(self, route, cost_type = "both", isPiecewise = False):
-        # Compute total cost or piecewise cost for a given route
         total = 0
         if isPiecewise : 
             piece_elevation = []
@@ -58,9 +58,8 @@ class Algorithms:
             return total
 
     
-
+    # Function that returns the path given a parent mapping and the final dest
     def get_route(self, parent_node, dest):
-        "returns the path given a parent mapping and the final dest"
         path = [dest]
         curr = parent_node[dest]
         while curr!=-1:
@@ -68,19 +67,16 @@ class Algorithms:
             curr = parent_node[curr]
         return path[::-1]
 
-
+    # Function that does the sanity check to see whether the start or end nodes are None values
     def check_nodes(self):
-        # Checks if start or end nodes are None values
         if self.start_node is None or self.end_node is None:
             return False
         return True
 
 
 
-    # Run the dijkstra algorithm
-    def dijkstra(self):
-        #Implements Dijkstra's Algorithm
-        
+    # Function that implements Djikstra's routing algorithm
+    def dijkstra(self):       
         if not self.check_nodes() : 
             return
         G, elevation_adjust, shortest, elevation_type = self.G, self.elevation_adjust, self.shortest_dist, self.elevation_type
