@@ -12,6 +12,7 @@ class DataAbstract(object):
         self.algorithms = None
         self.abstract = None 
 
+    # Function to initialize class data
     def initialize_data(self):
         self.data = {
             "start": None, 
@@ -27,6 +28,7 @@ class DataAbstract(object):
             "popup_flag": 0
         }
 
+    # Function to parse and store geojson data
     def get_geojson(self, coordinates):
         self.geojson = {}
         self.geojson["properties"] = {}
@@ -36,8 +38,8 @@ class DataAbstract(object):
         self.geojson["geometry"]["coordinates"] = coordinates
         return self.geojson
 
+    # Function to get the nescessary data characteristics from the paths calculated
     def get_data_from_path(self, start, end, shortest_path, elevated_path):
-        # assert(shortest_path.end_to_end_path != elevated_path.end_to_end_path)
         self.data["start"] = start
         self.data["end"] = end
         self.data["elevation_route"] = self.get_geojson(elevated_path[0])
@@ -54,13 +56,13 @@ class DataAbstract(object):
             self.data["popup_flag"] = 2
         return self.data
 
-    # TODO: Clean up this function, what are the indices? 
+    # Function to get the address of the location in String form
     def get_data_point_from_location(self, locate, len_location):
         return locate[0] + ',' + locate[1] + ',' + locate[2] + ',' + locate[len_location - 5] + ',' + locate[
             len_location - 3] + ', USA - ' + locate[len_location - 2]
 
+    # Function to getting data to plot the routes
     def get_data(self, startpt, endpt, x, min_max, log=True):
-        # gets data for plotting the routes.
         locator = Photon(user_agent="myGeocoder")
         location = locator.reverse(startpt)
         locate = location.address.split(',')
