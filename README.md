@@ -9,7 +9,8 @@ Maximizing the elevation gain would be useful for health enthusiasts who are loo
 jogging or bicycling through elevated path whereas old people or people who wants to avoid climbing elevated roads because of health issues can 
 minimize elevation gain.
 
-
+# Video Explanation of Architecture/Demo 
+https://youtu.be/hskTD87tZUE
 
 # Architecture
 ![Alt text](files/ArchitectureDiagram.PNG?raw=true "Elena")
