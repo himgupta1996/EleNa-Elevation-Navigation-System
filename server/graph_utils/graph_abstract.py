@@ -5,6 +5,7 @@ import numpy as np
 import pickle as p
 
 class Graph_Abstraction:
+    # Function to initialize the data variables 
     def __init__(self):
         print("Initializing the model")        
         self.GOOGLEAPIKEY="AIzaSyCJgTZU8StpSFsIulOvO40iF684-g6m4IA"      
@@ -15,13 +16,14 @@ class Graph_Abstraction:
         else:
             self.init = False
 
+    # Function that returns networkx graph with eleveation data and rise or fall grade.
     def elevation_graph(self, G):
-        # Returns networkx graph with eleveation data and rise or fall grade.
+
         G = ox.add_node_elevations(G, api_key=self.GOOGLEAPIKEY)        
         return G
 
+    # Function that returns the distance between two nodes when given their longitudes and latitudes
     def dist_nodes(self,lat1,long1,lat2,long2):
-		# Given latitudes and longitudes of two nodes, returns the distance between them.
         radius=6371008.8 # Earth radius
         
         lat1, long1 = np.radians(lat1), np.radians(long1)
@@ -33,8 +35,9 @@ class Graph_Abstraction:
         temp2 = 2 * np.arctan2(np.sqrt(temp1), np.sqrt(1 - temp1))
         return radius * temp2
 
+
+    # Function that adds in the distance of all nodes in a graph to the final destination
     def add_dist_frm_endpt(self,G,endpt):
-        #Distance from all nodes in the graph to the final destination is added
         end_node=G.nodes[ox.get_nearest_node(G, point=endpt)]
         lat1, long1 =end_node["y"],end_node["x"]        
         for node,data in G.nodes(data=True):
@@ -45,9 +48,8 @@ class Graph_Abstraction:
             
         return G
 
+    # Function that returns elevation data along with the graph
     def get_graph(self, endpt):    
-        #Returns elevation data with the graph.
-   
         start = [42.384803, -72.529262]
         if not self.init:
             print("Loading the Graph")
