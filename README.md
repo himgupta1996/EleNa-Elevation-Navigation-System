@@ -10,7 +10,7 @@ jogging or bicycling through elevated path whereas old people or people who want
 minimize elevation gain.
 
 # Video Explanation of Architecture/Demo 
-https://youtu.be/hskTD87tZUE
+The demo video is located here: https://youtu.be/hskTD87tZUE
 
 # Architecture
 ![Alt text](files/ArchitectureDiagram.PNG?raw=true "Elena")
