@@ -130,9 +130,8 @@ class Algorithms:
         print("best", self.best)
         return
 
-
+    # Function that recontructs the path and plots it 
     def retrace_path(self, from_node, curr_node):
-        # Reconstructs the path and plots it.
         if not from_node or not curr_node : return
         total = [curr_node]
         while curr_node in from_node:
@@ -143,9 +142,8 @@ class Algorithms:
         return
 
 
-
+    # Function that implements the A* routing algorithm 
     def a_star(self):
-        # Implements A* algorithm for calculating distances. 
         evaluated = set() #evaluated node set      
         toEval = set() # nodes that are not evaluated
         best_node = {} # best cost to end
@@ -205,10 +203,8 @@ class Algorithms:
 
 
 
-
+    # Function that calculates the shortest path
     def get_shortest_path(self, startpt, endpt, elevation_adjust, elevation_type = "maximize", log=True):
-        
-        # Calculates shortest path
         G = self.G
         self.elevation_adjust = elevation_adjust/100.0
         self.elevation_type = elevation_type
