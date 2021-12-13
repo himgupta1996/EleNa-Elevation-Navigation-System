@@ -1,4 +1,6 @@
 # EleNa-Elevation-Navigation-System
+### Final project deliverable submission for COMPSCI 520, Theory and Practice of Software Engineering
+### SUBMITTED BY: Maroon5  
 
 Given a start location in the form of latitiude and longitude as well as end location, Elevation-based Navigation
 (EleNa) is an application that finds a route which either maximizes or minimizes the elevation gain according to the user preference.
