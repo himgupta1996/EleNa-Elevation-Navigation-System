@@ -55,4 +55,8 @@ After installing the required dependencies and building the app server as mentio
 
 Unit test have been added for our application.
 
-Unit test location : `` server/tests/test.py``
+Unit test location : ``tests/test.py``
+
+# Developer Documentation
+
+The Developer documentation pdf can be found at : `` doc/EleNA Developer doc.pdf``
